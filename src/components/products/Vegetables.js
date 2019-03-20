@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Item from './Item'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+
 class Vegetables extends Component {
   render() {
     return (
       <div className="Vegetables">
-         <Item obj={this.props.state.ui.vegetables}/>
+         <Item data={this.props.vegetables}/>
       </div>
     )
   }
@@ -13,8 +16,12 @@ class Vegetables extends Component {
 
 const mapStateToProps = (state) => {
   return {
-   state
+      vegetables: state.firestore.ordered.vegetables,
   }
 }
 
-export default connect(mapStateToProps)(Vegetables)
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+      { collection: 'vegetables', orderBy: ['addedOn', 'desc'] },
+  ]))(Vegetables)

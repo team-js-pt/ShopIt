@@ -6,14 +6,14 @@ import SignUp from './auth/SignUp'
 import Navbar from './header/Navbar';
 import AddProduct from './products/AddProduct';
 import AddToCart from './cart/AddToCart'
-import InitialPage from '../DashBoard_Components/InitialPage';
 import Vegetables from "./products/Vegetables"
 import Sports from './products/Sports';
 import Mobiles from './products/Mobiles'
 import Beauty from './products/Beauty'
-import Appliance from './products/Appliance'
+import Appliances from './products/Appliances'
 import Singleitem from './products/Singleitem'
 import Footwear from './products/Footwear'
+import NotFound from './auth/NotFound'
 
 class App extends Component {
   render() {
@@ -27,14 +27,20 @@ class App extends Component {
             <Route path='/signup' component={SignUp} />
             <Route path='/addproduct' component={AddProduct}/>
             <Route path='/cart' component={AddToCart}/>
-            <Route path='/InitialPage' component={InitialPage}/>
-            <Route path='/Vegetables' component={Vegetables}/>
-            <Route path='/Sports' component={Sports}/>
-            <Route path='/Mobiles' component={Mobiles}/>
-            <Route path='/Beauty' component={Beauty}/>
-            <Route path='/Appliance' component={Appliance}/>
-            <Route path='/Footwear' component={Footwear}/>
-            <Route path='/Singleitem' component={Singleitem}/>
+            <Route path='/vegetables' exact component={Vegetables}/>
+            <Route path='/sports' exact component={Sports}/>
+            <Route path='/mobiles' exact component={Mobiles}/>
+            <Route path='/beauty' exact component={Beauty}/>
+            <Route path='/appliances' exact component={Appliances}/>
+            <Route path='/footwear' exact component={Footwear}/>
+            <Route path='/singleitem' component={Singleitem}/>
+            <Route path='/vegetables/:id' component={Singleitem}/>
+            <Route path='/appliances/:id' component={Singleitem}/>
+            <Route path='/footwear/:id' component={Singleitem}/>
+            <Route path='/beauty/:id' component={Singleitem}/>
+            <Route path='/mobiles/:id' component={Singleitem}/>
+            <Route path='/sports/:id' component={Singleitem}/>
+            <Route component={NotFound}/>
 
           </Switch>
         </div>

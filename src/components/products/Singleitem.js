@@ -8,7 +8,6 @@ class Singleitem extends Component{
         this.props.dispatch(singleItemDelete())
     }
     render(){
-    console.log(this.props.state)
     return(
         <div className="container-fluid">
             <div className="row m-auto">

@@ -4,24 +4,24 @@ import Item from './Item'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 
-class Footwear extends Component {
+class Appliances extends Component {
   render() {
+    console.log(this.props.state.auth.Appliances);
     return (
-      <div className="Footwear">
-         <Item data={this.props.footwear}/>
+      <div className="Appliance">
+         <Item data={this.props.appliances}/>
       </div>
     )
   }
 }
-
 const mapStateToProps = (state) => {
   return {
-      footwear : state.firestore.ordered.footwear
+      appliances : state.firestore.ordered.appliance
   }
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-      { collection: 'footwear', orderBy: ['addedOn', 'desc'] }
-  ]))(Footwear)
+      { collection: 'appliances', orderBy: ['addedOn', 'desc'] }
+  ]))(Appliances)

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
- import { signUp } from '../../store/actions/authActions'
 import '../assets/css/AddProduct.css'
 import {storage} from '../../config/shopItConfig';
 import {addProduct} from '../../store/actions/productActions'
@@ -9,11 +8,9 @@ class AddProduct extends Component {
   state = {}
   constructor(props) {
     super(props)
-  
     this.state = {}
     this.image = {}
   }
-  
   handleChange = (e) => {
     this.setState({
       [e.target.id]: e.target.value
@@ -24,17 +21,15 @@ class AddProduct extends Component {
       this.image = e.target.files[0];
     }
   }
-  handleSubmit =async (e) => {
+  handleSubmit =(e) => {
     e.preventDefault();
     e.target.reset();
-    await this.handleUpload();
-    
-    this.props.addProduct(this.state);
+    this.handleUpload();
   } 
-  handleUpload = () => {
-    const {productName} = this.state;
-    const uploadTask = storage.ref(`images/${productName}`).put(this.image);
-    uploadTask.on('state_changed', (snapshot) => {
+  handleUpload = async() => {
+    const {productName,category} = this.state;
+    const uploadTask = storage.ref(`${category}/${productName}`).put(this.image);
+   await  uploadTask.on('state_changed', (snapshot) => {
       // progrss function ....
     },
     (error) => {
@@ -46,7 +41,7 @@ class AddProduct extends Component {
           console.log(url);
           this.setState({
            ...this.state,url
-          });
+          },()=>{this.props.addProduct(this.state)});
       })
   });
 }
@@ -62,6 +57,10 @@ class AddProduct extends Component {
             <option>Select Category</option>
             <option value="vegetables">vegetables</option>
             <option value="footwear">Footwear</option>
+            <option value="appliances">Appliances</option>
+            <option value="mobiles">Mobiles</option>
+            <option value="beauty">Beauty</option>
+            <option value="sports">Sports</option>
             </select>
           </div>
           <div className="mt-4 d-flex flex-row justify-content-around">
@@ -95,7 +94,6 @@ class AddProduct extends Component {
     )
   }
 }
-
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,

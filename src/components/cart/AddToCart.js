@@ -3,22 +3,9 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import '../assets/css/AddToCart.css';
 import {AddCart, EditCart, ItemIncrement, ItemDecrement} from '../../store/actions/cartActions'
-
-
-const mapStateToProps=(state)=>({
-  cartItems:state.cart.cart
-})
-const mapDispatchToProps=(dispatch)=>({
-    onIncrementClick:(index)=> dispatch(ItemIncrement("INCREMENT",index)),
-    onDecrementClick:(index)=> dispatch(ItemDecrement('DECREMENT',index)),
-    removeItem:(index)=> dispatch({type:'REMOVE_ITEM',id:index}), 
-    addItem:(payload)=> dispatch(AddCart(payload)),
-    editItem:(payload)=> dispatch(EditCart(payload))
-})
 var total=0;
 class AddToCart extends Component {
   render() {
-    
     return (
       <div className="cart_container">
       <div className="cart">
@@ -73,5 +60,14 @@ class AddToCart extends Component {
     )
   }
 }
-
+const mapStateToProps=(state)=>({
+  cartItems:state.cart.cart
+})
+const mapDispatchToProps=(dispatch)=>({
+    onIncrementClick:(index)=> dispatch(ItemIncrement("INCREMENT",index)),
+    onDecrementClick:(index)=> dispatch(ItemDecrement('DECREMENT',index)),
+    removeItem:(index)=> dispatch({type:'REMOVE_ITEM',id:index}), 
+    addItem:(payload)=> dispatch(AddCart(payload)),
+    editItem:(payload)=> dispatch(EditCart(payload))
+})
 export default connect(mapStateToProps, mapDispatchToProps)(AddToCart);

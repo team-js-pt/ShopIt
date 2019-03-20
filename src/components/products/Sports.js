@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Item from './Item'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
+
 class Sports extends Component {
   render() {
     return (
       <div className="Sports">
-         <Item obj={this.props.state.ui.sports}/>
+         <Item data={this.props.sports}/>
       </div>
     )
   }
@@ -13,7 +16,12 @@ class Sports extends Component {
 
 const mapStateToProps = (state) => {
   return {
-   state
+      sports : state.firestore.ordered.sports
   }
 }
-export default connect(mapStateToProps)(Sports)
+
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+      { collection: 'sports', orderBy: ['addedOn', 'desc'] }
+  ]))(Sports)
