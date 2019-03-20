@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import InitialPage from '../DashBoard_Components/InitialPage';
 
 
 class Dashboard extends Component {
@@ -18,8 +19,7 @@ class Dashboard extends Component {
       <div className="container">
        
         <div className="row">
-         <h5 className="text-center">Dashboard</h5>
-         {veg}
+         <InitialPage/>
         </div>
        
       </div>

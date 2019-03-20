@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Item from './Item'
-class Footwear extends Component {
+class Vegetables extends Component {
   render() {
     return (
-      <div className="Footwear">
-         <Item obj={this.props.state.ui.sandals}/>
+      <div className="Vegetables">
+         <Item obj={this.props.state.ui.vegetables}/>
       </div>
     )
   }
@@ -17,4 +17,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Footwear)
+export default connect(mapStateToProps)(Vegetables)
