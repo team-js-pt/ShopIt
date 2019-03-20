@@ -5,6 +5,7 @@ import SignIn from './auth/SignIn'
 import SignUp from './auth/SignUp'
 import Navbar from './header/Navbar';
 import AddProduct from './products/AddProduct';
+import AddToCart from './cart/AddToCart'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/addproduct' component={AddProduct}/>
+            <Route path='/cart' component={AddToCart}/>
           </Switch>
         </div>
       </BrowserRouter>
