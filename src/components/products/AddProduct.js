@@ -4,12 +4,14 @@ import { connect } from 'react-redux'
  import { signUp } from '../../store/actions/authActions'
 import '../assets/css/AddProduct.css'
 import {storage} from '../../config/shopItConfig';
+import {addProduct} from '../../store/actions/productActions'
 class AddProduct extends Component {
   state = {}
   constructor(props) {
     super(props)
   
     this.state = {}
+    this.image = {}
   }
   
   handleChange = (e) => {
@@ -19,21 +21,19 @@ class AddProduct extends Component {
   }
   handleImage = (e) => {
     if (e.target.files[0]) {
-      const image = e.target.files[0];
-      this.setState(() => ({image}));
+      this.image = e.target.files[0];
     }
   }
   handleSubmit =async (e) => {
     e.preventDefault();
-    console.log(this.state);
     e.target.reset();
     await this.handleUpload();
     
-    // this.props.signUp(this.state);
+    this.props.addProduct(this.state);
   } 
   handleUpload = () => {
-    const {image,productName} = this.state;
-    const uploadTask = storage.ref(`images/${productName}`).put(image);
+    const {productName} = this.state;
+    const uploadTask = storage.ref(`images/${productName}`).put(this.image);
     uploadTask.on('state_changed', (snapshot) => {
       // progrss function ....
     },
@@ -44,7 +44,9 @@ class AddProduct extends Component {
       // complete function ....
       storage.ref('images').child(productName).getDownloadURL().then(url => {
           console.log(url);
-          this.setState({...this.state,url},()=>console.log(this.state));
+          this.setState({
+           ...this.state,url
+          });
       })
   });
 }
@@ -57,6 +59,7 @@ class AddProduct extends Component {
           <div className="mt-5 d-flex flex-row justify-content-around">
             <label htmlFor="category" className=" font-weight-bold ">Select Category:</label>
             <select id='category' className="bg-none border-dark" onChange={this.handleChange}>
+            <option>Select Category</option>
             <option value="vegetables">vegetables</option>
             <option value="footwear">Footwear</option>
             </select>
@@ -102,7 +105,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch)=> {
   return {
-    signUp: (creds) => dispatch(signUp(creds))
+    addProduct: (product) => dispatch(addProduct(product))
   }
 }
 
