@@ -10,6 +10,7 @@ class AddProduct extends Component {
     super(props)
     this.state = {}
     this.image = {}
+    this.id = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase()
   }
   handleChange = (e) => {
     this.setState({
@@ -28,7 +29,7 @@ class AddProduct extends Component {
   } 
   handleUpload = async() => {
     const {productName,category} = this.state;
-    const uploadTask = storage.ref(`${category}/${productName}`).put(this.image);
+    const uploadTask = storage.ref(`${category}/${productName}${this.id}`).put(this.image);
    await  uploadTask.on('state_changed', (snapshot) => {
       // progrss function ....
     },
@@ -37,7 +38,7 @@ class AddProduct extends Component {
       console.log(error);
     },() => {
       // complete function ....
-      storage.ref('images').child(productName).getDownloadURL().then(url => {
+      storage.ref(category).child(`${productName}${this.id}`).getDownloadURL().then(url => {
           console.log(url);
           this.setState({
            ...this.state,url
@@ -61,6 +62,7 @@ class AddProduct extends Component {
             <option value="mobiles">Mobiles</option>
             <option value="beauty">Beauty</option>
             <option value="sports">Sports</option>
+            <option value="clothing">Clothing</option>
             </select>
           </div>
           <div className="mt-4 d-flex flex-row justify-content-around">

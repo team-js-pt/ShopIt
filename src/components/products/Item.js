@@ -26,9 +26,11 @@ class Item extends Component {
                                         <div className="card-content text-center">
                                             <p>{val.productName}</p>
                                             <p><b>Price: {val.price}$</b></p>
+                                           
                                         </div>
                                     </div>
                                 </Link>
+                                <button>add to cart</button>
                             </div>
                         )
                     })
@@ -41,4 +43,5 @@ class Item extends Component {
         }
     }
 };
+
 export default connect(null)(Item);

@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 
 class Dashboard extends Component {
   render() {
+    console.log(this.props.profile)
     const { auth,vegetables} = this.props;
    
     let veg = vegetables&&vegetables.map(veg=>{
@@ -40,7 +41,7 @@ class Dashboard extends Component {
                {this.props.ui.map((value,index)=>{
                     return(
                         <div className="col-lg-2 col-sm-6 my-3" key={index}>
-                            <div className="card" style={{height:'180px'}}>
+                            <div className="card">
                             <Link to={"/"+value.name}><img src={require(`./assets/images/${value.pic}`)} className="card-img-top w-100" alt={value.name} /></Link>
                                 <div className="card-body text-center">
                                     <p className="card-title">{value.name}</p>
@@ -63,9 +64,12 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
     vegetables : state.firestore.ordered.vegetables,
     footwear : state.firestore.ordered.footwear,
-    ui : state.ui.items
+    ui : state.ui.items,
+    profile: state.firebase.profile
+
   }
 }
+
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([

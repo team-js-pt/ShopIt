@@ -14,6 +14,7 @@ import Appliances from './products/Appliances'
 import Singleitem from './products/Singleitem'
 import Footwear from './products/Footwear'
 import NotFound from './auth/NotFound'
+import Clothing from './products/Clothing'
 
 class App extends Component {
   render() {
@@ -33,13 +34,15 @@ class App extends Component {
             <Route path='/beauty' exact component={Beauty}/>
             <Route path='/appliances' exact component={Appliances}/>
             <Route path='/footwear' exact component={Footwear}/>
+            <Route path='/clothing' exact component={Clothing}/>
             <Route path='/singleitem' component={Singleitem}/>
             <Route path='/vegetables/:id' component={Singleitem}/>
             <Route path='/appliances/:id' component={Singleitem}/>
             <Route path='/footwear/:id' component={Singleitem}/>
             <Route path='/beauty/:id' component={Singleitem}/>
             <Route path='/mobiles/:id' component={Singleitem}/>
-            <Route path='/sports/:id' component={Singleitem}/>
+            <Route path='/sports/:id' component={Singleitem}/>\
+            <Route path='/clothing/:id' component={Singleitem}/>
             <Route component={NotFound}/>
 
           </Switch>

@@ -14,10 +14,12 @@ class Singleitem extends Component{
                 <div className="col-lg-4 col-md-6 my-5"> 
                     <div className="card border h-100 " >
                             <div className="card-image d-flex justify-content-center align-items-center my-5">
-                                <img  alt={this.props.state.ui.singleItem.title}/>
+                                <img src={this.props.state.ui.singleItem.url} alt={this.props.state.ui.singleItem.productName} style={{width:"400px",height:"400px"}}/>
                             </div>
                             <div className="card-content text-center">
-                                <p>{this.props.state.ui.singleItem.Description}</p>
+                                <h4>{this.props.state.ui.singleItem.productName}</h4>
+                                
+                                <p>{this.props.state.ui.singleItem.description}</p>
                                 <p><b>Price: {this.props.state.ui.singleItem.price}$</b></p>
                             </div>
                     </div>
@@ -33,6 +35,5 @@ const mapStateToProps = (state) => {
      state
     }
   }
-  
 export default connect(mapStateToProps)(Singleitem)
 
