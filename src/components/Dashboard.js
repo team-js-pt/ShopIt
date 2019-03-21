@@ -7,14 +7,12 @@ import {Link} from 'react-router-dom'
 
 class Dashboard extends Component {
   render() {
-    console.log(this.props.profile)
     const { auth,vegetables} = this.props;
    
     let veg = vegetables&&vegetables.map(veg=>{
       return (<div key={veg.id}>{veg.description}</div>);
     })
      if (!auth.uid) return <Redirect to='/signin' /> 
-
     return (
       <div className="container">
         <div className="row">
@@ -24,14 +22,13 @@ class Dashboard extends Component {
                     <div className="carousel slide" data-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img   img src={require('./assets/images/img1.jpeg')} alt="img2" style={{width:'100%' ,height:'50vh' }}></img>
+                                <img src={require('./assets/images/img1.jpeg')} alt="img2" style={{width:'100%' ,height:'50vh' }}></img>
                             </div>
 
-                            <div img src={require('./assets/images/img2.jpeg')}className="carousel-item">
-                                <img alt="img1" style={{width:'100%',height:'50vh'}}></img>
+                            <div><img src={require('./assets/images/img2.jpeg')}className="carousel-item" alt="img1" style={{width:'100%',height:'50vh'}}></img>
                             </div>
                             <div className="carousel-item">
-                                <img img src={require('./assets/images/img3.jpeg')} alt="img3" style={{width:'100%',height:'50vh'}}></img>
+                                <img  src={require('./assets/images/img3.jpeg')} alt="img3" style={{width:'100%',height:'50vh'}}></img>
                             </div>
                         </div>
                     </div>
