@@ -23,14 +23,14 @@ class Dashboard extends Component {
                     <div className="carousel slide" data-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active">
-                                <img  alt="img2" style={{width:'100%' ,height:'50vh' }}></img>
+                                <img   img src={require('./assets/images/img1.jpeg')} alt="img2" style={{width:'100%' ,height:'50vh' }}></img>
                             </div>
 
-                            <div className="carousel-item">
+                            <div img src={require('./assets/images/img2.jpeg')}className="carousel-item">
                                 <img alt="img1" style={{width:'100%',height:'50vh'}}></img>
                             </div>
                             <div className="carousel-item">
-                                <img alt="img3" style={{width:'100%',height:'50vh'}}></img>
+                                <img img src={require('./assets/images/img3.jpeg')} alt="img3" style={{width:'100%',height:'50vh'}}></img>
                             </div>
                         </div>
                     </div>
@@ -41,7 +41,7 @@ class Dashboard extends Component {
                     return(
                         <div className="col-lg-2 col-sm-6 my-3" key={index}>
                             <div className="card" style={{height:'180px'}}>
-                            <Link to={"/"+value.name}><img className="card-img-top w-100" alt={value.name} /></Link>
+                            <Link to={"/"+value.name}><img src={require(`./assets/images/${value.pic}`)} className="card-img-top w-100" alt={value.name} /></Link>
                                 <div className="card-body text-center">
                                     <p className="card-title">{value.name}</p>
                                 </div>

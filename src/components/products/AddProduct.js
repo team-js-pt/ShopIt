@@ -65,23 +65,23 @@ class AddProduct extends Component {
           </div>
           <div className="mt-4 d-flex flex-row justify-content-around">
             <label htmlFor="productName" className="font-weight-bold">Product Name:</label>
-            <input type="text" id='productName' className="border-dark" onChange={this.handleChange} />
+            <input type="text" id='productName' className="border-dark" onChange={this.handleChange} required/>
           </div>
           <div className=" mt-4  d-flex flex-row justify-content-around">
             <label htmlFor="description" className=" font-weight-bold">Product Description: </label>
-            <textarea  id='description' className="border-dark"  onChange={this.handleChange} />
+            <textarea  id='description' className="border-dark"  onChange={this.handleChange} required/>
           </div>
           <div className="mt-4 d-flex flex-row justify-content-around">
             <label htmlFor="price" className=" font-weight-bold">Price:</label>
-            <input type="text" id='price' className="border-dark" onChange={this.handleChange} />
+            <input type="text" id='price' className="border-dark" onChange={this.handleChange} required/>
           </div>
           <div className="mt-4 d-flex flex-row justify-content-around">
             <label htmlFor="offer" className=" font-weight-bold">Offer:</label>
-            <input type="text" id='offer' className="border-dark" onChange={this.handleChange} />
+            <input type="text" id='offer' className="border-dark" onChange={this.handleChange} required/>
           </div>
           <div className="mt-4 d-flex flex-row justify-content-around">
             <label htmlFor="image" className=" font-weight-bold mr-4 ">Product Image:</label>
-            <input type="file" id='image' className="border-dark  ml-5 " accept="image/*" onChange={this.handleImage} />
+            <input type="file" id='image' className="border-dark  ml-5 " accept="image/*" onChange={this.handleImage} required/>
           </div>
           <div className="mt-4">
           <button className="btn btn-dark mb-4 rounded-pill h6 font-weight-bold">ADD</button>
