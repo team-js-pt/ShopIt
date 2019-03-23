@@ -26,6 +26,13 @@
   color: rgba(255, 255, 255, 0.6);
   opacity: 0.6;
   letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.navbar .addProductText {
+  font-weight: bold;
+  font-family: 'Lato-Bold';
+  letter-spacing: 1px;
 }
 
 .hightlight {

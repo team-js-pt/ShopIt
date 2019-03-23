@@ -10,7 +10,7 @@ const Navbar = (props) => {
   const links = auth.uid ?(auth.email=="admin@gmail.com")?<SuperUserLinks profile={profile}/>: <SignedInLinks profile={profile} /> : <SignedOutLinks />;
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-fixed-top m-0 p-3 ">
+    <nav className="navbar navbar-expand-lg navbar-fixed-top m-0 px-3 ">
     
       <div className="container-fluid d-flex ">
         <Link to='/' className=" mb-0 h2 text-white text-decoration-none textStyles">ShopIt</Link>

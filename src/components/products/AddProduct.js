@@ -46,53 +46,45 @@ class AddProduct extends Component {
       })
   });
 }
+
   render() {
+   this.catty;
+     
     const { auth, authError } = this.props;
     if (auth.email!=="admin@gmail.com") return <Redirect to='/' /> 
     return (
-      <div className="container  d-flex flex-column align-items-center align-middle mt-5 AddProductContainer col-lg-4 ">
-      <form className="text-dark  align-middle  text-center p-0 mt-5 d-flex flex-column align-middle" onSubmit={this.handleSubmit}>
-          <div className="mt-5 d-flex flex-row justify-content-around">
-            <label htmlFor="category" className=" font-weight-bold ">Select Category:</label>
-            <select id='category' className="bg-none border-dark" onChange={this.handleChange}>
-            <option>Select Category</option>
-            <option value="vegetables">vegetables</option>
-            <option value="footwear">Footwear</option>
-            <option value="appliances">Appliances</option>
-            <option value="mobiles">Mobiles</option>
-            <option value="beauty">Beauty</option>
-            <option value="sports">Sports</option>
-            <option value="clothing">Clothing</option>
-            </select>
+      <div className="container d-flex  align-items-center  justify-content-center  AddProductContainer  ">
+         
+          <form className="text-dark  text-center d-flex flex-column col-lg-6 addForm align-items-center  justify-content-center " onSubmit={this.handleSubmit}>
+          <p class="AP_Text mt-5 ">Add Product</p>
+          
+          <div  id='category'  onChange={this.handleChange}  >
+                  <select className="categories my-4 inputs  ">
+                    <option >Categories</option>
+                    <option value="vegetables">vegetables</option>
+                    <option value="footwear">Footwear</option>
+                      <option value="appliances">Appliances</option>
+                      <option value="mobiles">Mobiles</option>
+                      <option value="beauty">Beauty</option>
+                      <option value="sports">Sports</option>
+                      <option value="clothing">Clothing</option>
+                  </select>
           </div>
-          <div className="mt-4 d-flex flex-row justify-content-around">
-            <label htmlFor="productName" className="font-weight-bold">Product Name:</label>
-            <input type="text" id='productName' className="border-dark" onChange={this.handleChange} required/>
-          </div>
-          <div className=" mt-4  d-flex flex-row justify-content-around">
-            <label htmlFor="description" className=" font-weight-bold">Product Description: </label>
-            <textarea  id='description' className="border-dark"  onChange={this.handleChange} required/>
-          </div>
-          <div className="mt-4 d-flex flex-row justify-content-around">
-            <label htmlFor="price" className=" font-weight-bold">Price:</label>
-            <input type="text" id='price' className="border-dark" onChange={this.handleChange} required/>
-          </div>
-          <div className="mt-4 d-flex flex-row justify-content-around">
-            <label htmlFor="offer" className=" font-weight-bold">Offer:</label>
-            <input type="text" id='offer' className="border-dark" onChange={this.handleChange} required/>
-          </div>
-          <div className="mt-4 d-flex flex-row justify-content-around">
-            <label htmlFor="image" className=" font-weight-bold mr-4 ">Product Image:</label>
-            <input type="file" id='image' className="border-dark  ml-5 " accept="image/*" onChange={this.handleImage} required/>
-          </div>
-          <div className="mt-4">
-          <button className="btn btn-dark mb-4 rounded-pill h6 font-weight-bold">ADD</button>
+              
+            <input type="text" id='productName' className="inputs col-10 mb-4 mt-3" placeholder="Product Name" onChange={this.handleChange} required/>    
+            <textarea  id='description' className=" col-10 mb-4 mt-3" placeholder="Description" onChange={this.handleChange} required/>        
+            <input type="text" id='price' className="inputs col-10 mb-4 mt-3" placeholder="Price" onChange={this.handleChange} required/>       
+            <input type="text" id='offer' className="inputs col-10 mb-4 mt-3" placeholder="Offer" onChange={this.handleChange} required/>        
+           <label id='image' className="inputs bg-none col-4  mb-4 mt-2 py-2" onChange={this.handleImage} required > Choose a File<span className="pl-2">></span>
+                <input type="file" id='image'   accept="image/*"  required/>
+                </label>
+          <button className="btn  text-white font-weight-bold col-lg-4   col-sm-6 col-md-4   mb-5 addBtn">ADD</button>
             <div className="text-center text-danger">
               { authError ? <p>{authError}</p> : null }
-            </div>
+          
           </div>
         </form>
-      </div>
+          </div>
     )
   }
 }
