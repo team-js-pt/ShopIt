@@ -10,6 +10,7 @@ class SignUp extends Component {
     password: '',
     firstName: '',
     lastName: '',
+    phNumber:''
   }
   handleChange = (e) => {
     this.setState({
@@ -24,37 +25,25 @@ class SignUp extends Component {
     const { auth, authError } = this.props;
     // if (auth.uid) return <Redirect to='/' />
     return (
-      <div className="container d-flex flex-column align-items-center align-middle mt-5 signInContainer col-lg-4 ">
-        <form className="text-dark align-middle text-center p-0 mt-5 " onSubmit={this.handleSubmit}>
-          {/* <h5 className="my-3 h3 font-weight-bold">Sign Up</h5> */}
-          <div className="mt-5">
-            <label htmlFor="firstName" className="mr-4 p-1 mb-4 font-weight-bold">First Name:</label>
-            <input type="text" id='firstName' className="border-dark" onChange={this.handleChange} />
+      <div className="container-fluid d-flex  align-items-center  justify-content-center mainContainer">
+   
+        <div className="Image d-lg-block col-lg-6  d-none mr-5 ">
+           <img src={require("../assets/images/signIn.png")}  />
+        </div>
+        <div className="loginContainer col-lg-4 col-md-8 col-sm-10 ">
+          <form className="text-dark align-middle text-center p-0 mt-5 " onSubmit={this.handleSubmit}>
+              <p className="text">Sign Up</p>
+              <input type="text" id="firstName" className="inputs col-10 mb-5 mt-3" placeholder="First Name"required onChange={this.handleChange}/>
+              <input type="text" id="lastName" className="inputs col-10 mb-5 mt-3" placeholder="Last Name"required onChange={this.handleChange}/>
+              <input type="email" id="email" className="inputs col-10 mb-5 mt-3" placeholder="Email ID"required onChange={this.handleChange}/>
+              <input type="password" id="password" className="inputs col-10 mb-5" placeholder="Password" required onChange={this.handleChange}/>
+              <input type="text" id="phNumber" className="inputs col-10 mb-5 mt-3" placeholder="Phone No"required onChange={this.handleChange}/>
+              <button className="col-lg-4 loginBtn  col-sm-9 col-md-6 mt-2 mb-5">Sign Up</button>
+          </form>
+          <div className="text-center text-danger">
+            { authError ? <p>{authError}</p> : null }
           </div>
-          <div className="mt-4">
-            <label htmlFor="lastName" className="mr-4 p-1 mb-4 font-weight-bold">Last Name:</label>
-            <input type="text" id='lastName' className="border-dark" onChange={this.handleChange} />
-          </div>
-          <div className=" mt-4 ">
-            <label htmlFor="email" className="mr-4 p-4 mb-4 font-weight-bold">Email: </label>
-            <input type="email" id='email' className="border-dark" className="border-dark" onChange={this.handleChange} />
-          </div>
-          <div className="mt-4">
-            <label htmlFor="password" className="mr-4 p-1 mb-4 font-weight-bold">Password:</label>
-            <input type="password" id='password' className="border-dark" onChange={this.handleChange} />
-          </div>
-          <div className="mt-4">
-            <label htmlFor="phoneNumber" className="mr-4 p-4 mb-4 font-weight-bold">PhNo:</label>
-            <input type="number" id='number' className="border-dark" onChange={this.handleChange} />
-          </div>
-          <div className="mt-4">
-            <button className="btn btn-dark mb-4 rounded-pill h6 font-weight-bold">Sign Up</button>
-            <div className="text-center text-danger">
-              {authError ? <p>{
-                authError}</p> : null}
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     )
   }
