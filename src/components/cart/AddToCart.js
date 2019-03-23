@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
-import '../assets/css/AddToCart.css';
+// import '../assets/css/AddToCart.css';
+import '../assets/css/Cart.css'
 
 import {addToCart, EditCart, ItemIncrement, ItemDecrement} from '../../store/actions/cartActions'
 import { firestore } from 'firebase';
@@ -8,7 +9,140 @@ var total=0;
 class AddToCart extends Component {
   render() {
     return (
-      <div className="cart_container">
+      <div className="cart_container w-100 border my-5">
+            
+            <div className="cart w-100 d-flex justify-content-center align-items-around">
+                <div className="left-cart border" >
+                    <div className="m-2">
+                    <div className="cart-top">
+                        <h4 >My Cart</h4>
+                        <div className="item-top " >Clear Cart</div>
+                       
+                    </div>
+                   
+                    <div className="items mt-3 mb-3">
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text m-1">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        <div className="item">
+                            <div className="img" ><img className="item-img  w-100" src={require('../assets/images/img1.jpeg')} ></img></div>
+                            <div className="item-body">
+                                <div className="item-title">3xPotato</div>
+                                <div className="item-text">
+                                    <button className="border rounded-circle m-1" >+</button>
+                                    <button className="border rounded-circle mx-1">-</button>
+                                </div>
+                                
+                            </div>
+                            <div className="price">100/-</div>
+                        </div>
+                        
+                        
+                    </div>
+                    <div className="bill mx-4">
+                      <div className="total-bill">Total Bill</div>
+                      <div className="amount ">300/-</div>
+                    </div>
+                    <div className="checkout">
+                        <button>CheckOut</button>
+                    </div>
+                    </div>
+                </div>
+                <div className="right-cart border m-1">hiii</div>
+            </div>
       {/* <div className="cart">
           <h3>Your Cart</h3>
          {
