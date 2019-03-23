@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
-// import { connect } from 'tls';
 import {connect} from 'react-redux';
 import '../assets/css/AddToCart.css';
-import {AddCart, EditCart, ItemIncrement, ItemDecrement} from '../../store/actions/cartActions'
+
+import {addToCart, EditCart, ItemIncrement, ItemDecrement} from '../../store/actions/cartActions'
+import { firestore } from 'firebase';
 var total=0;
 class AddToCart extends Component {
   render() {
     return (
       <div className="cart_container">
-      <div className="cart">
+      {/* <div className="cart">
           <h3>Your Cart</h3>
          {
            this.props.cartItems.map((item,index)=>{
               return <div key={index} className="cartItems">
-                   {/* <img src={require("../images/"+item.image)} alt={item.name}></img> */}
+                   <img src={require("../images/"+item.image)} alt={item.name}></img>
                    <div>{item.no_of_items}x{item.name} 
                     <div className="inc_dec">
                       <button onClick={()=>this.props.onIncrementClick(index)}>+</button>
@@ -46,7 +47,6 @@ class AddToCart extends Component {
           if(i===1)
           { this.props.editItem(payload)}
           else {i=0,this.props.addItem(payload)}
-          
          }}>CheckOut</button>
          <div className="total_price">total price:<span>{
                this.props.cartItems.reduce((value,item)=>{
@@ -56,18 +56,19 @@ class AddToCart extends Component {
          </div>
       </div>
       <div className="advertisement">Advertisements displaying here</div>
-      </div>
+       */}
+       </div>
     )
   }
 }
-const mapStateToProps=(state)=>({
+const mapStateToProps=(state,ownProps)=>({
   cartItems:state.cart.cart
 })
 const mapDispatchToProps=(dispatch)=>({
     onIncrementClick:(index)=> dispatch(ItemIncrement("INCREMENT",index)),
     onDecrementClick:(index)=> dispatch(ItemDecrement('DECREMENT',index)),
     removeItem:(index)=> dispatch({type:'REMOVE_ITEM',id:index}), 
-    addItem:(payload)=> dispatch(AddCart(payload)),
+    addItem:(payload)=> dispatch(addToCart(payload)),
     editItem:(payload)=> dispatch(EditCart(payload))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(AddToCart);
+export default connect(mapStateToProps,mapDispatchToProps)(AddToCart)

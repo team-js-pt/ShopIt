@@ -22,7 +22,7 @@ class SignUp extends Component {
   }
   render() {
     const { auth, authError } = this.props;
-    if (auth.uid) return <Redirect to='/' />
+    // if (auth.uid) return <Redirect to='/' />
     return (
       <div className="container d-flex flex-column align-items-center align-middle mt-5 signInContainer col-lg-4 ">
         <form className="text-dark align-middle text-center p-0 mt-5 " onSubmit={this.handleSubmit}>

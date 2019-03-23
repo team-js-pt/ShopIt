@@ -1,8 +1,8 @@
-const initState = {
-  cart: [{ name: "apple", price: 50, image: "mango.png", no_of_items: 1 }, { name: "chudi", price: 1500, image: "chudi.jpg", no_of_items: 1 }]
-}
+// const initState = {
+//   cart: [{ name: "apple", price: 50, image: "mango.png", no_of_items: 1 }, { name: "chudi", price: 1500, image: "chudi.jpg", no_of_items: 1 }]
+// }
 
-const cartReducer = (state = initState, action) => {
+const cartReducer = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_CART':
       return {
@@ -68,6 +68,12 @@ const cartReducer = (state = initState, action) => {
           }
         })
       }
+    case 'ADD_TO_CART_SUCCESS': 
+      console.log("Add cart success");
+      return state;
+    case 'ADD_TO_CART_FAILED': 
+      console.log("Add cart failed");
+      return state;
     default:
       return state
   }

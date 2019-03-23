@@ -12,7 +12,7 @@ const SignedInLinks = (props) => {
         <span><NavLink to='/' className="btn rounded-circle lighten-1 btn-danger mx-4 textStyles p-2">
           {props.profile.initials}
         </NavLink></span>
-          <li className="cartelement"><NavLink to='/cart'>cart<div className="count">{i.length}</div></NavLink></li>
+          <li className="cartelement"><NavLink to='/cart'>cart<div className="count">{i}</div></NavLink></li>
       </div>
     </div>
   )

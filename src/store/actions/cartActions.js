@@ -1,28 +1,50 @@
-export const addProduct = (product) => {
-  return (dispatch, getState, {getFirestore}) => {
+
+export const addToCart = (payload,userid) =>{
+  return async(dispatch,getState,{getFirestore})=>{
     const firestore = getFirestore();
-    firestore.collection(product.category).add({
-      ...product,
+    let isAlreadyExits = false;
+     await firestore.collection('users').doc(userid).collection('cart').get().then(snapshot => {
+      snapshot.forEach(doc => {
+        if(doc.data().productName===payload.productName){
+          isAlreadyExits = true;
+          firestore.collection('users').doc(userid).collection('cart').doc(doc.id).update({
+            noOfItems : doc.data().noOfItems+1
+          }).then(()=>console.log("Document Updated"))
+        }    
+      });
+  })
+  if(!isAlreadyExits) {
+    firestore.collection('users').doc(userid).collection('cart').add({
+      productName : payload.productName,
+      price : payload.price,
+      noOfItems : 1,
+      url:payload.url,
       addedOn: new Date()
     }).then(() => {
-      dispatch({ type: 'ADD_PRODUCT_SUCCESS' });
+      dispatch({ type: 'ADD_TO_CART_SUCCESS' });
     }).catch(err => {
-      dispatch({ type: 'ADD_PRODUCT_ERROR' }, err);
+      dispatch({ type: 'ADD_TO_CART_ERROR' }, err);
     });
   }
-};
-export const AddCart = (payload)=>{
-    return (dispatch,getState,{getFirestore}) =>{
-      const firestore = getFirestore();
-      firestore.collection(users).add({
-        ...payload,
-        addedOn : new Date()
+}}
+export const showCart = (userid)=>{
+  console.log("in action")
+  return async(dispatch,getState,{getFirestore})=>{
+    const firestore = getFirestore();
+    let cartItems = []
+    console.log("from return")
+     await firestore.collection('users').doc(userid).collection('cart').get().then(snapshot => {
+      snapshot.forEach(doc => {
+        console.log("doc",doc.data());
+        cartItems.push(doc.data())
       }).then(()=>{
-        dispatch({type:"ADD_CART_SUCCESS"})
+        dispatch({type:'SHOW_CART',cartItems})
       }).catch(err=>{
-        dispatch({type: "ADD_CART_FAILED"})
+        dispatch({type:"SHOW_CART_ERROR",err})
       })
-    }
+      
+  })
+}
 }
   export const EditCart = (payload)=>({
     type:"EDIT_CART",

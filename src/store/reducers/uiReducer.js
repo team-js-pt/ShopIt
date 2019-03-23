@@ -5,7 +5,7 @@ const initState = {
 const uiReducer = (state = initState, action) => {
   switch(action.type){
     case 'SINGLE':
-      return {...state,singleItem:action.payload.selected}
+      return {...state,singleItem:action.payload}
     case 'DELETE':
       return {...state,singleItem:''}
     default:

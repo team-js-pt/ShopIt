@@ -5,7 +5,7 @@ import { singleItemDelete } from '../../store/actions/singleItemAction';
 
 class Singleitem extends Component{
     componentWillUnmount(){
-        this.props.dispatch(singleItemDelete())
+        this.props.singleItemDelete()
     }
     render(){
     return(
@@ -35,5 +35,5 @@ const mapStateToProps = (state) => {
      state
     }
   }
-export default connect(mapStateToProps)(Singleitem)
+export default connect(mapStateToProps,{singleItemDelete})(Singleitem)
 
