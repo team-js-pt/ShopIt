@@ -17,57 +17,9 @@ const cartReducer = (state = {}, action) => {
           }
         ]
       }
-    case "EDIT_CART":
-      return {
-        ...state,
-        cart:
-          state.cart.map((item, index) => {
-            if (item.name === action.name && item.price === action.price) {
-
-              item.no_of_items = item.no_of_items + 1;
-              return item
-            }
-            else {
-              return item
-
-            }
-          }),
-      }
-    case 'INCREMENT':
-      return {
-        ...state,
-        cart: state.cart.map((item, index) => {
-          if (index === action.id) {
-            item.no_of_items = item.no_of_items + 1
-            return item
-          }
-          else {
-            return item;
-          }
-        })
-      }
-    case 'DECREMENT':
-      return {
-        ...state,
-        cart: state.cart.map((item, index) => {
-          if (index === action.id) {
-            item.no_of_items = item.no_of_items - 1
-            return item;
-          }
-          else {
-            return item;
-          }
-        })
-      }
-    case 'REMOVE_ITEM':
-      return {
-        ...state,
-        cart: state.cart.filter((item, index) => {
-          if (index !== action.id) {
-            return item
-          }
-        })
-      }
+    case 'COUNT_OF_CART':
+        console.log("count",action.count);
+        return {...state,count:action.count}
     case 'ADD_TO_CART_SUCCESS': 
       console.log("Add cart success");
       return state;

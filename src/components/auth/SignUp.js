@@ -19,6 +19,7 @@ class SignUp extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
+    e.target.reset();
     this.props.signUp(this.state);
   }
   render() {

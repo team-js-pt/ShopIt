@@ -27,40 +27,55 @@ export const addToCart = (payload,userid) =>{
     });
   }
 }}
-export const showCart = (userid)=>{
-  console.log("in action")
+export const incrementItem = (userid,productName)=>{
   return async(dispatch,getState,{getFirestore})=>{
     const firestore = getFirestore();
-    let cartItems = []
-    console.log("from return")
-     await firestore.collection('users').doc(userid).collection('cart').get().then(snapshot => {
+    firestore.collection('users').doc(userid).collection('cart').get().then(snapshot => {
       snapshot.forEach(doc => {
-        console.log("doc",doc.data());
-        cartItems.push(doc.data())
-      }).then(()=>{
-        dispatch({type:'SHOW_CART',cartItems})
-      }).catch(err=>{
-        dispatch({type:"SHOW_CART_ERROR",err})
-      })
-      
+        if(doc.data().productName===productName){
+          firestore.collection('users').doc(userid).collection('cart').doc(doc.id).update({
+            noOfItems : doc.data().noOfItems+1
+          }).then(()=>console.log("incremented")).catch((err)=>console.log("error is",err))
+        }
+         
+      });
+  })
+}}
+export const decrementItem = (userid,productName)=>{
+  return async(dispatch,getState,{getFirestore})=>{
+    const firestore = getFirestore();
+    firestore.collection('users').doc(userid).collection('cart').get().then(snapshot => {
+      snapshot.forEach(doc => {
+        if(doc.data().productName===productName){
+          firestore.collection('users').doc(userid).collection('cart').doc(doc.id).update({
+            noOfItems : doc.data().noOfItems-1
+          }).then(()=>console.log("decremented")).catch((err)=>console.log("error is",err))
+        }
+        if(doc.data().noOfItems===1 && doc.data().productName===productName){
+            firestore.collection('users').doc(userid).collection('cart').doc(doc.id).delete().then(()=>console.log("document deleted")).catch(
+              (err)=>console.log("error occured",err)
+            )
+        }
+         
+      });
+  })
+}}
+export const clearCart = (userid)=>{
+  console.log(userid)
+  return async(dispatch,getState,{getFirestore})=>{
+    const firestore = getFirestore();
+    firestore.collection('users').doc(userid).collection('cart').get().then(snapshot => {
+      snapshot.forEach(doc => {
+             firestore.collection('users').doc(userid).collection('cart').doc(doc.id).delete().then(()=>console.log("document deleted")).catch(
+               (err)=>console.log("error occured",err))         
+      });
   })
 }
 }
-  export const EditCart = (payload)=>({
-    type:"EDIT_CART",
-    name:payload.name,
-    price:payload.price,
-    image:payload.image,
-    no_of_items:payload.no_of_items
-  })
-
-  export const ItemIncrement = (type,index)=>({
-      type:type,
-      id:index
-  })
-
-  export const ItemDecrement = (type,index)=>({
-    type:type,
-    id:index
-})
-  
+export const countCart=(count)=>{
+  console.log(count);
+  return {
+    type:'COUNT_OF_CART',
+    count
+  }
+}

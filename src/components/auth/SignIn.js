@@ -15,6 +15,7 @@ class SignIn extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault();
+        e.target.reset();
         this.props.signIn(this.state)
     }
     render() {
