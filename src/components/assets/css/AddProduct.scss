@@ -19,7 +19,7 @@
         color: #4a4a4a;
     }
     .categories{
-        width: 136px;
+      
         height: 29px;
         border-radius: 3px;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -44,6 +44,12 @@
       input[type="file"] {
         display: none;
     }
+    // #category{
+    //   margin-right:293px;
+    // }
+    // #image{
+    //   margin-right:285px;
+    // }
     .custom-select {
         position: relative;
         font-family: 'Lato-Bold';
@@ -97,7 +103,7 @@
       }
     .addBtn{
         height: 50px;
-        border-radius: 3px;
+        border-radius: 10px;
         background-color: #008081;
         
     }

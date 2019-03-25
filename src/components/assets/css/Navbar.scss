@@ -4,10 +4,56 @@
     font-weight: normal;
     font-style: normal;
   }
+  @font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon/fonts/icomoon.eot?8tul3b');
+    src:  url('../fonts/icomoon/fonts/icomoon.eot?8tul3b#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon/fonts/icomoon.ttf?8tul3b') format('truetype'),
+      url('../fonts/icomoon/fonts/icomoon.woff?8tul3b') format('woff'),
+      url('../fonts/icomoon/fonts/icomoon.svg?8tul3b#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-shopping-cart:before {
+    content: "\e901";
+    color:white;
+    font-size: 35px;
+  }
+  .icon-search-icon:before {
+    content: "\e902";
+    color: #929292;
+  }
+  
+  
+  
+
+.scrolled{
+    position: sticky;
+    top:0;
+    z-index: 999;
+    transition: all 1s ease-in-out;
+    scroll-behavior:smooth;
+}
 .navbar {
     margin-bottom: 0;
-    border-radius: 3px;
     background-color: #027272;
+    height:60px;
     .textStyles{
         cursor: pointer;
         font-family: 'Lato-Bold';
@@ -17,23 +63,67 @@
         color:#ffffff;
     }
     .signStyles{
-        font-size: 18px;
+        font-size: 19px;
         font-weight: 500;
-        color: rgba(255, 255,255 ,0.6);
-        opacity: 0.6;
+        color:#3a9797;       
         letter-spacing: 1px;
         cursor: pointer;
+    }
+    .count{
+        color:#008081;
+        background-color: white;
+        border-radius:50%;
+        font-size:13px;
     }
     .addProductText{
         font-weight:bold;
         font-family: 'Lato-Bold';
         letter-spacing: 1px;
     }
+    .profileDropdown:focus{
+       
+        box-shadow: none;
+    }
+    .categoriesContainer{
+        margin-right: 70vw;
+    }
+    .CategoriesNav{
+        border-radius: 3px;
+        background-color: #ffffff;
+        color:#008081;
+        font-weight: bold;
+    }
+    .dropdownDiv{
+        width:100px;
+        margin-top:6px;
+        padding:0;
+        min-width:0;
+    }
+    .loginRound{
+        font-size: 15px;
+        color:#008081;
+        font-weight:bolder;
+        font-family: 'Lato-Bold';
+        cursor: pointer;
+    }
+    .loginRoundOptions,.items{
+        font-size: 15px;
+        color:#008081;
+        font-weight:300;
+        font-family: 'Lato-Bold';
+        cursor: pointer;
+    }
+    .cart{
+        padding-top:3px;
+        font-family:'Lato-Bold';
+        font-size: 20px;
+        font-weight: 300;
+        color: #ffffff;
+        text-decoration: none;
+    }
+  
 }
-   .hightlight{
-       color:white;
-       border-bottom:2px solid white;
-   }
+
  
 
   

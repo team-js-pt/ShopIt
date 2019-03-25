@@ -58,8 +58,9 @@ class AddProduct extends Component {
           <form className="text-dark  text-center d-flex flex-column col-lg-6 addForm align-items-center  justify-content-center " onSubmit={this.handleSubmit}>
           <p class="AP_Text mt-5 ">Add Product</p>
           
-          <div  id='category'  onChange={this.handleChange}  >
-                  <select className="categories my-4 inputs  ">
+            <div className="d-flex flex-column col-11 justify-content-start" >
+              <div  id='category' className="col-4   m-0 p-0 " onChange={this.handleChange}  >
+                  <select className="categories my-4 col-12 m-0 p-0  inputs ">
                     <option >Categories</option>
                     <option value="vegetables">vegetables</option>
                     <option value="footwear">Footwear</option>
@@ -71,11 +72,11 @@ class AddProduct extends Component {
                   </select>
           </div>
               
-            <input type="text" id='productName' className="inputs col-10 mb-4 mt-3" placeholder="Product Name" onChange={this.handleChange} required/>    
-            <textarea  id='description' className=" col-10 mb-4 mt-3" placeholder="Description" onChange={this.handleChange} required/>        
-            <input type="text" id='price' className="inputs col-10 mb-4 mt-3" placeholder="Price" onChange={this.handleChange} required/>       
-            <input type="text" id='offer' className="inputs col-10 mb-4 mt-3" placeholder="Offer" onChange={this.handleChange} required/>        
-           <label id='image' className="inputs bg-none col-4  mb-4 mt-2 py-2" onChange={this.handleImage} required > Choose a File<span className="pl-2">></span>
+            <input type="text" id='productName' className="inputs col-12 mb-4 mt-3" placeholder="Product Name" onChange={this.handleChange} required/>    
+            <textarea  id='description' className=" col-12 mb-4 mt-3" placeholder="Description" onChange={this.handleChange} required/>        
+            <input type="text" id='price' className="inputs col-12 mb-4 mt-3" placeholder="Price" onChange={this.handleChange} required/>       
+            <input type="text" id='offer' className="inputs col-12 mb-4 mt-3" placeholder="Offer" onChange={this.handleChange} required/>        
+           <label id='image' className="inputs bg-none col-5  mb-4 mt-2 py-2" onChange={this.handleImage} required > Choose a File<span className="pl-2">></span>
                 <input type="file" id='image'   accept="image/*"  required/>
                 </label>
           <button className="btn  text-white font-weight-bold col-lg-4   col-sm-6 col-md-4   mb-5 addBtn">ADD</button>
@@ -83,6 +84,7 @@ class AddProduct extends Component {
               { authError ? <p>{authError}</p> : null }
           
           </div>
+            </div>
         </form>
           </div>
     )

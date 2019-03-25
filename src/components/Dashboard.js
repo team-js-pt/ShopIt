@@ -78,13 +78,9 @@ class Dashboard extends Component {
       <div className="container-fluid mainDashboard flex-grow-1 flex-column" >
         <div className="row">
           <div className="container">
-            <div className="search-wrapper search col-sm-12">
-
+            <div className="search-wrapper search col-sm-12 d-flex flex-row">
+              <span className="icon-search-icon pt-3 pr-1"></span>
               <input type="text" id="search" className="search_input input" placeholder="Search an Item..." onChange={(e) => this.handleChange(e)}></input>
-
-
-
-
             </div>
             {
               (this.state.query) ? (
@@ -115,7 +111,7 @@ class Dashboard extends Component {
                       return (
                         <div className="col-lg-3 col-sm-6 my-3 " key={index}>
                           <div className="card cardStyles" >
-                            <Link to={"/" + value.name}><img src={require(`./assets/images/${value.pic}`)} className="card-img-top w-100 cardImage" alt={value.name} /></Link>
+                            <Link to={"/" + value.name}><img src={require(`./assets/images/${value.pic}`)} className="card-img-top w-100  cardImage" alt={value.name} /></Link>
                             <div className="card-body text-center pt-5">
                               <p className="card-title">{value.name}</p>
                             </div>
@@ -137,7 +133,7 @@ class Dashboard extends Component {
                               <div className="col-lg-3 col-md-6 my-4" key={ind}>
                                 <Link to={`/${val.category}/${val.id}`} style={{ textDecoration: 'none', color: 'black' }}>
                                   <div className="card mx-3" onClick={() => { this.singleItemAdd(val) }} style={{ borderColor: "rgba(0,0,0,0.14)", boxShadow: "0 2px 8px 0 rgba(0, 0, 0, 0.1)", borderRadius: "3px", height: "295px", width: "240px" }}>
-                                    <img className="card-img-top" src={val.url} alt="Card image cap" style={{ height: "160px" }} />
+                                    <img className="card-img-top pt-3" src={val.url} alt="Card image cap" style={{ height: "160px" }} />
                                     <div className="card-body" style={{ height: "135px" }}>
                                       <h5 className="card-title" style={{ color: "#4a4a4a", fontSize: "30px", fontWeight: "300", fontFamily: "Lato", width: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: " ellipsis" }}>{val.productName}</h5>
                                       <p className="card-text d-flex justify-content-between align-items-center">
