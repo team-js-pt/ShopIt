@@ -15,7 +15,7 @@ import Singleitem from './products/Singleitem'
 import Footwear from './products/Footwear'
 import NotFound from './auth/NotFound'
 import Clothing from './products/Clothing'
-import Address from './Address/Addres'
+import Profile from './Address/Profile';
 
 class App extends Component {
   render() {
@@ -44,7 +44,7 @@ class App extends Component {
             <Route path='/mobiles/:id' component={Singleitem}/>
             <Route path='/sports/:id' component={Singleitem}/>\
             <Route path='/clothing/:id' component={Singleitem}/>
-            <Route path='/address' component ={Address}/>
+            <Route path='/profile' component ={Profile}/>
             <Route component={NotFound}/>
 
           </Switch>

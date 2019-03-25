@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {addProfile} from '../../store/actions/profileActions'
+import {connect} from 'react-redux'
 const InputStyle = {
     borderBottomLeftRadius: '0',
     borderBottomRightRadius: '0',
@@ -11,7 +13,7 @@ const InputStyle = {
     borderColor: 'lightgray',
     fontFamily: 'Lato'
 };
-class Addres extends Component {
+class Address extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,17 +30,23 @@ class Addres extends Component {
             [e.target.id]: e.target.value
         })
     }
-   
-    saved=(e)=> {
+    componentDidUpdate(oldProps) {
+        const newProps = this.props;
+
+        if(oldProps.address !== newProps.address) {
+          this.setState({
+             ...this.props.address
+        })
+        }
+      }
+    handleSubmit=(e)=> {
         e.preventDefault();
         e.target.reset();
-       
-     
+        this.props.addProfile(this.state,this.props.profile.userid);
     }
     render() {
-        console.log(this.state)
         return (
-            <form className="row mt-3 " onSubmit={this.saved}>
+            <form className="row mt-3 " onSubmit={this.handleSubmit}>
                 <div className="col-md-12">
                     <div className="row m-auto border " style={{ boxShadow: '0 2px 6px 0px' }}>
                         <div className="col-12 border " style={{ backgroundColor: '#fafafa' }}>
@@ -47,13 +55,13 @@ class Addres extends Component {
                         <div className="col-md-8 mt-4">
                             <div className="form-group">
                                 <label className="m-0 text-dark">Primary address:</label>
-                                <input type="text" id='primaryAddress' className="form-control" placeholder="mandatory" style={InputStyle} required onBlur={this.handleChange}></input>
+                                <input type="text" id='primaryAddress' className="form-control" placeholder="mandatory" style={InputStyle} required onChange={this.handleChange} value={this.state.primaryAddress}></input>
                             </div>
                         </div>
                         <div className="col-md-8">
                             <div className="form-group">
                                 <label className="m-0 text-dark">Secondary address:</label>
-                                <input type="text" id="secondaryAddress" className="form-control" placeholder="optional" style={InputStyle} onBlur={ this.handleChange }></input>
+                                <input type="text" id="secondaryAddress" className="form-control" placeholder="optional" style={InputStyle} onChange={ this.handleChange } value={this.state.secondaryAddress}></input>
                             </div>
                         </div>
                         <div className="col-md-8">
@@ -61,19 +69,19 @@ class Addres extends Component {
                                 <div className="col-md-6 col-12">
                                     <div className="form-group">
                                         <label className="m-0 text-dark">State:</label>
-                                        <input type="text" id="State" className="form-control" placeholder="Enter state" style={InputStyle} required onBlur={this.handleChange}></input>
+                                        <input type="text" id="State" className="form-control" placeholder="Enter state" style={InputStyle} required onChange={this.handleChange} value={this.state.State}></input>
                                     </div>
                                 </div>
                                 <div className="col-md-6 col-12">
                                     <div className="form-group">
                                         <label className="m-0 text-dark">City:</label>
-                                        <input type="text" id="city" className="form-control" placeholder="Enter City" style={InputStyle} required onBlur={ this.handleChange }></input>
+                                        <input type="text" id="city" className="form-control" placeholder="Enter City" style={InputStyle} required onChange={ this.handleChange }value={this.state.city}></input>
                                     </div>
                                 </div>
                                 <div className="col-md-6 col-12">
                                     <div className="form-group">
                                         <label className="m-0 text-dark">PinCode:</label>
-                                        <input type="number" id="pincode" className="form-control" placeholder="Enter PinCode" style={InputStyle} required onBlur={this.handleChange }></input>
+                                        <input type="number" id="pincode" className="form-control" placeholder="Enter PinCode" style={InputStyle} required onChange={this.handleChange } value={this.state.pincode}></input>
                                     </div>
                                 </div>
                             </div>
@@ -87,4 +95,12 @@ class Addres extends Component {
         )
     }
 }
-export default Addres;
+const mapStateToProps=(state)=>{
+   return {
+    profile: state.firebase.profile
+   }
+}
+const mapDispatchToprops=(dispatch)=>({
+    addProfile:(profile,userid)=>dispatch(addProfile(profile,userid))
+})
+export default connect(mapStateToProps,mapDispatchToprops)(Address);
