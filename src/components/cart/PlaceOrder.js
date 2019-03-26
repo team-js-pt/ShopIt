@@ -63,7 +63,7 @@ export default class PlaceOrder extends Component {
                 <div className="CartItem   card mt-4 pt-4">
                         <div className="row no-gutters justify-content-between">
                             <div className="col-4 ">
-                                <img src={require("../assets/Images/mobilelogo.jpeg")} className="card-img col-12" alt="#"/>
+                                <img src={require("../assets/images/mobilelogo.jpeg")} className="card-img col-12" alt="#"/>
                             </div>  
                             <div className="col-4">
                             <p class="card-text">This is a wider card with supporting text below as. </p>
@@ -76,7 +76,7 @@ export default class PlaceOrder extends Component {
                 <div className="CartItem   card mt-4 pt-2">
                         <div className="row no-gutters justify-content-between">
                             <div className="col-4">
-                                <img src={require("../assets/Images/mobilelogo.jpeg")} className="card-img col-12" alt="#"/>
+                                <img src={require("../assets/images/mobilelogo.jpeg")} className="card-img col-12" alt="#"/>
                             </div>  
                             <div className="col-4">
                             <p class="card-text">This is a wider card with supporting text below as. </p>
@@ -89,7 +89,7 @@ export default class PlaceOrder extends Component {
                 <div className="CartItem   card mt-4 pt-2">
                         <div className="row no-gutters justify-content-between">
                             <div className="col-4">
-                                <img src={require("../assets/Images/mobilelogo.jpeg")} className="card-img col-12" alt="#"/>
+                                <img src={require("../assets/images/mobilelogo.jpeg")} className="card-img col-12" alt="#"/>
                             </div>  
                             <div className="col-4">
                             <p class="card-text">This is a wider card with supporting text below as. </p>

@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 export default class NotFound extends Component {
   render() {
     return (
-      <div className="col-12">
-        <Link to='/'><img src="../assets/images/pagenotfound.jpeg"/></Link>
+      <div className="container ">
+        <div className="col-12 pt-3">
+          <Link to='/'><img src={require("../assets/images/PageNotFound.jpg")} className="col-12" /></Link>
+        </div>
+       
       </div>
     )
   }
