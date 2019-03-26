@@ -36,7 +36,7 @@ const SignedInLinks = (props) => {
           </button>
           <div className="dropdown-menu dropdownDiv" aria-labelledby="dropdownMenuButton " style={{borderRadius:'3px'}}>
             <a className="dropdown-item loginRoundOptions" href="#">Profile</a><hr className="m-0 p-0 " />
-            <a className="dropdown-item loginRoundOptions" href="#">Orders</a><hr className="m-0 p-0" />
+            <a className="dropdown-item loginRoundOptions" href="#"><NavLink to="/orders">Orders</NavLink></a><hr className="m-0 p-0" />
             <a className="dropdown-item loginRoundOptions" href="#" onClick={props.signOut}>Log out</a>
           </div>
         </div>

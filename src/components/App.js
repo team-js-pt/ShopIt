@@ -17,6 +17,7 @@ import NotFound from './auth/NotFound'
 import Clothing from './products/Clothing'
 import Profile from './Address/Profile';
 import PlaceOrder from './cart/PlaceOrder';
+import Orders from './cart/Orders'
 
 class App extends Component {
   render() {
@@ -47,6 +48,7 @@ class App extends Component {
             <Route path='/clothing/:id' component={Singleitem}/>
             <Route path='/profile' component ={Profile}/>
             <Route path='/placeorder' component ={PlaceOrder}/>
+            <Route path='/orders' component={Orders}/>
             <Route component={NotFound}/>
 
           </Switch>
