@@ -5,7 +5,10 @@ import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 class Profile extends Component{
     render(){
+        console.log(this.props.user)
+        console.log(this.props.profile.userid)
         if(this.props.user){
+            
             let {firstName,lastName,email,phNumber} = this.props.user[0]
             return(
                 <div className="container mt-5">
@@ -19,8 +22,8 @@ class Profile extends Component{
                                 </div>
                                 <div className="col-lg-9 col-12 overflow-auto place-content-start">
                                     <h5>{firstName+lastName}</h5>
-                                    <p style={{fontFamily: 'Lato', color: '#9b9b9b'}}>{email }</p>
-                                    <p style={{fontFamily: 'Lato', color: '#9b9b9b'}}>Mobile:{phNumber }</p>
+                                    <p style={{fontFamily: 'Lato', color: '#9b9b9b'}}>{email}</p>
+                                    <p style={{fontFamily: 'Lato', color: '#9b9b9b'}}>Mobile:{phNumber}</p>
                                 </div>
                             </div>
                             <Address address = {this.props.address?this.props.address[0]:undefined}/>
@@ -47,6 +50,7 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect((props,firebase)=>[
-        { collection: `/users/${props.profile.userid}/profile` } 
+        { collection: `/users/${props.profile.userid}/profile` } ,
+        { collection: 'users', doc: props.profile.userid}
 ]))(Profile);
  

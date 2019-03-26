@@ -5,6 +5,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Link } from 'react-router-dom'
 import { singleItemAdd } from '../store/actions/singleItemAction'
+import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from "mdbreact";
 import './assets/css/Dashboard.css'
 import Spinner from './Spinner'
 
@@ -84,19 +85,39 @@ class Dashboard extends Component {
             {
               (this.state.query) ? (
                 <div>
-                  <div className="col-12 pt-4 carousel_display">
-                    <div className="carousel slide m-0 p-0" data-ride="carousel">
-                      <div className="carousel-inner p-0">
-                        <div className="carousel-item active">
-                          <img src={require('./assets/images/img1.jpeg')} alt="img2" className="carousel_image" ></img>
-                        </div>
-                        <div className="carousel-item">
-                          <img src={require('./assets/images/img2.jpeg')} alt="img1" className="carousel_image" />
-                        </div>
-                        <div className="carousel-item">
-                          <img src={require('./assets/images/img3.jpeg')} alt="img3" className="carousel_image" ></img>
-                        </div>
-                      </div>
+
+
+                  <div className="row my-2 ">
+                    <div className="container">
+
+                      <MDBContainer>
+                        <MDBCarousel activeItem={1} length={3} interval={2000} showControls={true} showIndicators={true} className="z-depth-1">
+                          <MDBCarouselInner>
+                            <MDBCarouselItem itemId="1">
+                              <MDBView>
+                                <img src={require('./assets/images/slider1.jpg')} class="d-block w-100" alt="..." />
+                                <MDBMask overlay="black-light" />
+                              </MDBView>
+
+                            </MDBCarouselItem>
+                            <MDBCarouselItem itemId="2">
+                              <MDBView>
+                                <img src={require('./assets/images/slider2.jpg')} class="d-block w-100" alt="..." />
+                                <MDBMask overlay="black-strong" />
+                              </MDBView>
+
+                            </MDBCarouselItem>
+                            <MDBCarouselItem itemId="3">
+                              <MDBView>
+                                <img src={require('./assets/images/slider3.jpg')} class="d-block w-100" alt="..." />
+                                <MDBMask overlay="black-slight" />
+                              </MDBView>
+
+                            </MDBCarouselItem>
+
+                          </MDBCarouselInner>
+                        </MDBCarousel>
+                      </MDBContainer>
                     </div>
                   </div>
 
@@ -144,11 +165,14 @@ class Dashboard extends Component {
                     </div>
                   </div>
                 )
-              }
-            </div>
-          </div>        )
-      }
-    }
+            }
+
+
+          </div>
+        </div>
+    )
+  }
+}
 
 const mapStateToProps = (state) => {
   return {

@@ -10,7 +10,7 @@ const Navbar = (props) => {
   const { auth, profile } = props;
   const links = auth.uid ?(auth.email=="admin@gmail.com")?<SuperUserLinks profile={profile}/>: <SignedInLinks profile={profile} /> : <SignedOutLinks />;
   var nav = document.getElementById('navbar');
-  
+
   window.addEventListener('scroll',()=>{
     console.log(window.scrollY)
     const isTop =window.scrollY < 63;

@@ -10,7 +10,6 @@ import Spinner from '../Spinner'
 var total=0;
 class AddToCart extends Component {
     render() {
-        (this.props.ordered)?this.props.countCart(this.props.ordered.length):''
         return (
             (this.props.ordered==undefined)?<Spinner/>:
             <div className="cart_container w-100 border my-5">

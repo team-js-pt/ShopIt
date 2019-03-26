@@ -1,8 +1,16 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 import '../assets/css/PlaceOrder.css'
+import {addProfile} from '../../store/actions/profileActions'
+import {compose} from 'redux'
+import {firestoreConnect} from 'react-redux-firebase'
 
-export default class PlaceOrder extends Component {
+ class PlaceOrder extends Component {
+     
   render() {
+    console.log(this.props.user)
+    // if(this.props.user){
+    //     let {firstName,lastName,email,phNumber} = this.props.user[0]
     return (
       <div className="container-fluid d-flex flex-sm-column flex-lg-row flex-md-column my-4 align-self-center justify-content-center">
           <div className="col-lg-8 col-sm-12   border-left border-right bg-white">
@@ -10,13 +18,15 @@ export default class PlaceOrder extends Component {
             <div className="mt-3 pt-2 row">
                 <div className="container  d-flex flex-row">
                     <span className="col-5"><img src={require("../assets/images/e.jpeg")} className="profileImg "></img></span>
-                    <div className="d-flex flex-column col-6 text-left pt-4">
-                        <p className="pName">William Jackson</p>
-                        <p className="pName pMail">WilliamJackson123@gmail.com</p>
+                    {/* <div className="d-flex flex-column col-6 text-left pt-4">
+                        {(this.props.address)?
+                        <><p className="pName">{this.props.address[0].firstName}</p>
+                        <p className="pName pMail">{this.props.address[0].email}</p>
                         <p className="pNum">
-                        Mobile : 123456789
-                        </p>
-                    </div>
+                        Mobile : {this.props.address.phNumber}
+                        </p></>:''
+                        }
+                    </div> */}
             </div>
             </div>
            <p className="addressText ml-5 px-2 col-6  mt-2 pb-4 ">Address</p>
@@ -41,13 +51,13 @@ export default class PlaceOrder extends Component {
            
            <p className="h4 Heading pt-3 mb-3 text-left">Payment Method</p>
            <div className="d-flex flex-row">
-           <label class="RadioContainer AddressLabel">PayTm
+           <label className="RadioContainer AddressLabel">PayTm
                 <input type="radio"  name="radio"/>
-                <span class="checkmark"></span>
+                <span className="checkmark"></span>
             </label>
-            <label class="RadioContainer AddressLabel mr-3">COD
+            <label className="RadioContainer AddressLabel mr-3">COD
             <input type="radio" checked="checked" name="radio"/>
-            <span class="checkmark"></span>
+            <span className="checkmark"></span>
             </label>
            </div>
            <button className="ChangeBtn col-lg-2 col-sm-2 text-center mr-5">Change</button>
@@ -69,7 +79,20 @@ export default class PlaceOrder extends Component {
                             <p class="card-text">This is a wider card with supporting text below as. </p>
                             </div>
                             <div className="col-4">
-                            <p class="card-text">This is a wider card with supporting text below as.</p>
+                            <p className="card-text">This is a wider card with supporting text below as.</p>
+                            </div>
+                        </div>
+                </div>
+                <div className="CartItem   card mt-4 pt-2">
+                        <div className="row no-gutters justify-content-between">
+                            <div className="col-4">
+                                <img src={require("../assets/images/mobilelogo.jpeg")} className="card-img col-12" alt="#"/>
+                            </div>  
+                            <div className="col-4">
+                            <p className="card-text">This is a wider card with supporting text below as. </p>
+                            </div>
+                            <div className="col-4">
+                            <p className="card-text">This is a wider card with supporting text below as.</p>
                             </div>
                         </div>
                 </div>
@@ -82,20 +105,7 @@ export default class PlaceOrder extends Component {
                             <p class="card-text">This is a wider card with supporting text below as. </p>
                             </div>
                             <div className="col-4">
-                            <p class="card-text">This is a wider card with supporting text below as.</p>
-                            </div>
-                        </div>
-                </div>
-                <div className="CartItem   card mt-4 pt-2">
-                        <div className="row no-gutters justify-content-between">
-                            <div className="col-4">
-                                <img src={require("../assets/images/mobilelogo.jpeg")} className="card-img col-12" alt="#"/>
-                            </div>  
-                            <div className="col-4">
-                            <p class="card-text">This is a wider card with supporting text below as. </p>
-                            </div>
-                            <div className="col-4">
-                            <p class="card-text">This is a wider card with supporting text below as.</p>
+                            <p className="card-text">This is a wider card with supporting text below as.</p>
                             </div>
                         </div>
                 </div>
@@ -110,3 +120,18 @@ export default class PlaceOrder extends Component {
     )
   }
 }
+const mapStateToProps=(state)=>{
+    return {
+     profile: state.firebase.profile,
+     user : state.firestore.ordered.users,
+     address: state.firestore.ordered["/users/" + state.firebase.profile.userid + "/profile"]
+    }
+ }
+ const mapDispatchToprops=(dispatch)=>({
+     addProfile:(profile,userid)=>dispatch(addProfile(profile,userid))
+ })
+ export default compose(
+    connect(mapStateToProps),
+    firestoreConnect((props,firebase)=>[
+        { collection: `/users/${props.profile.userid}/profile` } 
+]))(PlaceOrder);
