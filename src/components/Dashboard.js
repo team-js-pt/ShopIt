@@ -112,8 +112,8 @@ class Dashboard extends Component {
                         <div className="col-lg-3 col-sm-6 my-3 " key={index}>
                           <div className="card cardStyles" >
                             <Link to={"/" + value.name}><img src={require(`./assets/images/${value.pic}`)} className="card-img-top w-100  cardImage" alt={value.name} /></Link>
-                            <div className="card-body text-center pt-5">
-                              <p className="card-title">{value.name}</p>
+                            <div className="card-body text-center align-middle ">
+                              <p className="card-title cardName">{value.name}</p>
                             </div>
                           </div>
                         </div>

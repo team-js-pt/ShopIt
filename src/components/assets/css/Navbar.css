@@ -89,6 +89,10 @@
           box-shadow: none;
 }
 
+.navbar .profileDropdown {
+  outline: none;
+}
+
 .navbar .categoriesContainer {
   margin-right: 70vw;
 }

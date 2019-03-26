@@ -16,6 +16,7 @@ import Footwear from './products/Footwear'
 import NotFound from './auth/NotFound'
 import Clothing from './products/Clothing'
 import Profile from './Address/Profile';
+import PlaceOrder from './cart/PlaceOrder';
 
 class App extends Component {
   render() {
@@ -42,9 +43,10 @@ class App extends Component {
             <Route path='/footwear/:id' component={Singleitem}/>
             <Route path='/beauty/:id' component={Singleitem}/>
             <Route path='/mobiles/:id' component={Singleitem}/>
-            <Route path='/sports/:id' component={Singleitem}/>\
+            <Route path='/sports/:id' component={Singleitem}/>
             <Route path='/clothing/:id' component={Singleitem}/>
             <Route path='/profile' component ={Profile}/>
+            <Route path='/placeorder' component ={PlaceOrder}/>
             <Route component={NotFound}/>
 
           </Switch>
