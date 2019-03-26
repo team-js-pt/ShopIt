@@ -46,9 +46,11 @@ class App extends Component {
             <Route path='/mobiles/:id' component={Singleitem}/>
             <Route path='/sports/:id' component={Singleitem}/>
             <Route path='/clothing/:id' component={Singleitem}/>
+
             <Route path='/profile' component ={Profile}/>
             <Route path='/placeorder' component ={PlaceOrder}/>
             <Route path='/orders' component={Orders}/>
+
             <Route component={NotFound}/>
 
           </Switch>

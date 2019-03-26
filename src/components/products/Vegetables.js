@@ -3,10 +3,12 @@ import { connect } from 'react-redux'
 import Item from './Item'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import Spinner from '../Spinner'
 
 class Vegetables extends Component {
   render() {
     return (
+      (this.props.vegetables==undefined)?<Spinner/>:
       <div className="Vegetables">
          <Item data={this.props.vegetables}/>
       </div>

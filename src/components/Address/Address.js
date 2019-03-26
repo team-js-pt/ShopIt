@@ -21,7 +21,9 @@ class Address extends Component {
             secondaryAddress: '',
             State: '',
             city: '',
-            pincode: ''
+            pincode: '',
+            PS:[{label:'Primary Address',type:'primaryAddress',placeholder:'mandatory'},{label:'Secondary Address',type:'secondaryAddress',placeholder:'optional'}],
+            SCP:['State','city','pincode']
         }
         
     }
@@ -49,9 +51,10 @@ class Address extends Component {
             <form className="row mt-3 " onSubmit={this.handleSubmit}>
                 <div className="col-md-12">
                     <div className="row m-auto border " style={{ boxShadow: '0 2px 6px 0px' }}>
-                        <div className="col-12 border " style={{ backgroundColor: '#fafafa' }}>
+                        <div className="col-12 border mb-4" style={{ backgroundColor: '#fafafa' }}>
                             <h5 className="pt-2 pl-2">Address</h5>
                         </div>
+
                         <div className="col-md-8 mt-4">
                             <div className="form-group">
                                 <label className="m-0 text-dark">Primary address:</label>
@@ -84,6 +87,21 @@ class Address extends Component {
                                         <input type="number" id="pincode" className="form-control" placeholder="Enter PinCode" style={InputStyle} required onChange={this.handleChange } value={this.state.pincode}></input>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                  
+                        <div className="col-md-8">
+                            <div className="row">
+                                {this.state.SCP.map((val,ind)=>{
+                                    return(
+                                        <div className="col-md-6 col-12" key={ind}>
+                                            <div className="form-group">
+                                                <label className="m-0 text-dark">{val}</label>
+                                                <input type="text" id={val} className="form-control" placeholder={val} style={InputStyle} required onBlur={this.handleChange}></input>
+                                            </div>
+                                        </div>
+                                        )
+                                })}
                             </div>
                         </div>
                         <div className="col-md-8 d-flex justify-content-center align-items-center">

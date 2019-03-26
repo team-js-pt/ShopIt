@@ -18,9 +18,49 @@ class SignUp extends Component {
     })
   }
   handleSubmit = (e) => {
+    var NameValid = /^[a-zA-Z ]+$/;
+    var phValid = /^[0-9]{10}$/;
+    var emailValid = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z])+$/;
+    var pwdValid= /^[a-zA-Z0-9!@#$%^&*]{6,}$/;
+   
+    if (NameValid.test(this.state.firstName)){
+      if ( NameValid.test(this.state.lastName)){
+        if (emailValid.test(this.state.email)){
+          if (pwdValid.test(this.state.password)){
+            if ( phValid.test(this.state.phNumber)){
+              this.props.signUp(this.state);
+              e.target.reset();
+            }
+            else{
+              alert('enter the valid phone number')
+              this.setState({phNumber:''})
+              console.log(this.state)
+            }
+          }
+          else{
+            alert('minimum length of password should be 6')
+            this.setState({password:''})
+            console.log(this.state)
+          }
+        }
+        else{
+          alert('enter the valid Email')
+          this.setState({email:''})
+          console.log(this.state)
+        }
+      }
+      else{
+        alert('enter the valid LastName')
+        this.setState({lastName:''})
+        console.log(this.state)
+      }
+    }
+    else{
+      alert('enter the valid firstName')
+      this.setState({firstName:''})
+      console.log(this.state)
+    }
     e.preventDefault();
-    e.target.reset();
-    this.props.signUp(this.state);
   }
   render() {
     const { auth, authError } = this.props;

@@ -25,7 +25,7 @@ class Singleitem extends Component{
                        <p>{this.props.state.ui.singleItem.description}</p>
                        <h5>Price:{this.props.state.ui.singleItem.price}/-</h5>
                        <p>{this.props.state.ui.singleItem.offer}%<span className="text-danger">Off</span></p>
-                       <button style={{width:'211px',height:'50px',backgroundColor:'#008081',color:'white'}}>Add To Cart</button>
+                       <button style={{width:'211px',height:'50px',backgroundColor:'#008081',color:'white',outline:'none'}}>Add To Cart</button>
                     </div>
                 </div>
             </div>

@@ -5,12 +5,14 @@ import '../assets/css/AddToCart.css';
 import { incrementItem, decrementItem, clearCart,countCart } from '../../store/actions/cartActions'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
+import Spinner from '../Spinner'
 
 var total=0;
 class AddToCart extends Component {
     render() {
         (this.props.ordered)?this.props.countCart(this.props.ordered.length):''
         return (
+            (this.props.ordered==undefined)?<Spinner/>:
             <div className="cart_container w-100 border my-5">
                 <div className="cart w-100 d-flex justify-content-center align-items-around">
                     <div className="left-cart border" >
