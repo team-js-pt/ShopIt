@@ -9,6 +9,9 @@ export default class Onload extends Component {
         <div className="carouselOverlay" >
         <div className="shopBtn  mr-5 mt-2">
         <Link to='/Dashboard' className="ShopNow  text-white btn font-weight-bold">Shop Now</Link>
+        <div className="logoDiv">
+          <marquee className="logoTxt ">ShopIt</marquee>
+        </div>
         </div>
                         <MDBCarousel activeItem={1} length={4} interval={6000}  className="z-depth-3 " >
                           <MDBCarouselInner >
