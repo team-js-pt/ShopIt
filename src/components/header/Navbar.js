@@ -28,13 +28,18 @@ class Navbar extends Component{
   
   
   return (
-    
-    <nav className="navbar navbar-expand-lg navbar-fixed-top m-0 px-3" id="navbar" >
-      <div className="container-fluid d-flex ">
-        <Link to='/' className=" mb-0 h2 text-white text-decoration-none textStyles">ShopIt</Link>
-        {links}
-      </div>
-    </nav>
+  <nav className="navbar navbar-expand-lg navbar-light  NavStyle w-100 pr-5">
+  <Link to="/" className="navbar-brand pl-5 text-white anchor edge" >ShopIt</Link>
+  <button className="navbar-toggler buttn" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+    <span className="navbar-toggler-icon"></span>
+  </button>
+
+  <div className="collapse navbar-collapse w-100" id="navbarSupportedContent">
+    <div className="mr-auto"></div>
+    {links}
+  </div>
+</nav>
+
    
   )
 }}

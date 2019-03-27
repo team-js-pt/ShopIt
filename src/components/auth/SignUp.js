@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signUp } from '../../store/actions/authActions'
 import '../assets/css/SignIn.css'
+import Spinner from '../Spinner'
 
 class SignUp extends Component {
   state = {
@@ -64,8 +65,11 @@ class SignUp extends Component {
   }
   render() {
     const { auth, authError } = this.props;
+
     if (auth.uid) return <Redirect to='/signin' />
+
     return (
+      (this.props.auth.isLoaded==false)?<Spinner/>:
       <div className="container-fluid d-flex  align-items-center  justify-content-center mainContainer">
    
         <div className="Image d-lg-block col-lg-6  d-none mr-5 ">

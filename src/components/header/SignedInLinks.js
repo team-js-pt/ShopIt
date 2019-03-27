@@ -7,7 +7,7 @@ import {firestoreConnect} from 'react-redux-firebase'
 import '../assets/css/Navbar.css'
 const SignedInLinks = (props) => {
   return (
-    <div className="d-flex flex-row align-items-center">
+    <div className="d-flex flex-row align-items-center justify-content-around">
        <div className="categoriesContainer ">
            <div className="dropdown mx-3 " >
             <button className="  profileDropdown CategoriesNav  dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,8 +26,9 @@ const SignedInLinks = (props) => {
       </div>
       <div className="right d-flex flex-row">
         <div className="d-flex flex-row"><NavLink to='/cart'className=" mx-4 cart pt-2 d-flex flex-row" >
-         <div className="icon-shopping-cart ml-4"></div>
-          <div className="count  px-1" style={{position:"absolute",top:'10px',right:'180px'}}>{(props.ordered)?props.ordered.length:''}</div></NavLink></div>
+         <div className="icon-shopping-cart ml-4 pr">
+            <div className="place pa">{(props.ordered)?props.ordered.length:''}</div>
+         </div></NavLink></div>
           <div className="dropdown mx-3 " >
           <button className="btn  profileDropdown dropdownDiv" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <NavLink to='/' className="btn rounded-circle    bg-light loginRound ">
@@ -35,8 +36,8 @@ const SignedInLinks = (props) => {
             </NavLink>
           </button>
           <div className="dropdown-menu dropdownDiv" aria-labelledby="dropdownMenuButton " style={{borderRadius:'3px'}}>
-            <Link to='/Profiles' className="dropdown-item loginRoundOptions">Profile</Link><hr className="m-0 p-0 " />
-            <Link to='/Orders' className="dropdown-item loginRoundOptions"  >Orders</Link><hr className="m-0 p-0" />
+            <a className="dropdown-item loginRoundOptions" href="#">Profile</a><hr className="m-0 p-0 " />
+            <a className="dropdown-item loginRoundOptions" href="#"><NavLink to="/orders">Orders</NavLink></a><hr className="m-0 p-0" />
             <a className="dropdown-item loginRoundOptions" href="#" onClick={props.signOut}>Log out</a>
           </div>
         </div>

@@ -38,101 +38,65 @@
   color: #929292;
 }
 
-.scrolled {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  -webkit-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
-  scroll-behavior: smooth;
-}
-
-.navbar {
-  margin-bottom: 0;
+.NavStyle {
   background-color: #027272;
-  height: 60px;
 }
 
-.navbar .textStyles {
-  cursor: pointer;
-  font-family: 'Lato-Bold';
-  font-size: 24px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  color: #ffffff;
-}
-
-.navbar .signStyles {
-  font-size: 19px;
-  font-weight: 500;
-  color: #3a9797;
-  letter-spacing: 1px;
-  cursor: pointer;
-}
-
-.navbar .count {
-  color: #008081;
-  background-color: white;
-  border-radius: 50%;
-  font-size: 13px;
-}
-
-.navbar .addProductText {
-  font-weight: bold;
-  font-family: 'Lato-Bold';
-  letter-spacing: 1px;
-}
-
-.navbar .profileDropdown:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
-.navbar .profileDropdown {
+.NavStyle .buttn {
   outline: none;
 }
 
-.navbar .categoriesContainer {
-  margin-right: 70vw;
+.right .anchor {
+  text-decoration: none !important;
+  color: white !important;
 }
 
-.navbar .CategoriesNav {
-  border-radius: 3px;
-  background-color: #ffffff;
+.pr {
+  position: relative;
+}
+
+.pa {
+  position: absolute;
+  top: -9px;
+  left: 22px;
+  border-radius: 50%;
+  height: 21px;
+  width: 18px;
+  text-align: center;
+  background-color: white;
   color: #008081;
   font-weight: bold;
 }
 
-.navbar .dropdownDiv {
-  width: 100px;
-  margin-top: 6px;
-  padding: 0;
-  min-width: 0;
+a {
+  text-decoration: none !important;
 }
 
-.navbar .loginRound {
-  font-size: 15px;
-  color: #008081;
-  font-weight: bolder;
-  font-family: 'Lato-Bold';
-  cursor: pointer;
+@media screen and (max-width: 768px) {
+  .edge {
+    padding-left: 2px !important;
+  }
+  .NavStyle {
+    padding-right: 20px !important;
+  }
 }
 
-.navbar .loginRoundOptions, .navbar .items {
-  font-size: 15px;
-  color: #008081;
-  font-weight: 300;
-  font-family: 'Lato-Bold';
-  cursor: pointer;
+@media screen and (max-width: 768px) {
+  .rightEdge {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    padding-left: 0px;
+  }
 }
 
-.navbar .cart {
-  padding-top: 3px;
-  font-family: 'Lato-Bold';
-  font-size: 20px;
-  font-weight: 300;
-  color: #ffffff;
-  text-decoration: none;
+@media screen and (max-width: 767px) {
+  .rightEdge {
+    padding-left: 0px;
+  }
+  .rightEdge button {
+    padding-left: 0px !important;
+  }
 }
 /*# sourceMappingURL=Navbar.css.map */

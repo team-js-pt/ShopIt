@@ -6,7 +6,7 @@ import '../assets/css/Navbar.css'
 const SuperUserLinks = (props) => {
   return (
     <div className="d-flex flex-row">
-      <div className="right d-flex flex-row align-items-center">
+      <div className="rightEdge d-flex flex-row align-items-center">
       <span><Link className="   text-white text-decoration-none addProductText" to='/addproduct'>Add Product</Link></span>
       <div className="dropdown mx-3 " >
           <button className="btn  profileDropdown dropdownDiv" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
