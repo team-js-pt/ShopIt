@@ -4,9 +4,11 @@ import Item from './Item'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import Spinner from '../Spinner'
-
+import {Redirect} from 'react-router-dom'
 class Beauty extends Component {
   render() {
+    const { authError, auth } = this.props;
+    if (!auth.uid) return <Redirect to='/signin' />
     return (
       (this.props.beauty==undefined)?<Spinner/>:
       <div className="Beauty">
@@ -17,6 +19,7 @@ class Beauty extends Component {
 }
 const mapStateToProps = (state) => {
   return {
+      auth : state.firebase.auth,
       beauty : state.firestore.ordered.beauty
   }
 }

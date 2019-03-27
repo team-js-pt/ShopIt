@@ -2,9 +2,12 @@ import React,{Component} from 'react'
 import Address from './Address'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
+import { Redirect } from 'react-router-dom'
 import {firestoreConnect} from 'react-redux-firebase'
 class Profile extends Component{
     render(){
+        const { authError, auth } = this.props;
+        if (!auth.uid) return <Redirect to='/signin' />
         if(this.props.profile){
             
             let {firstName,lastName,email,phNumber} = this.props.profile
@@ -39,6 +42,7 @@ class Profile extends Component{
 }
 const mapStateToProps = (state, ownProps) => {
     return {
+        auth: state.firebase.auth,
         profile: state.firebase.profile,
         user : state.firestore.ordered.users,
         address: state.firestore.ordered["/users/" + state.firebase.profile.userid + "/profile"]

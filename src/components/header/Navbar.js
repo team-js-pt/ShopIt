@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{Component} from 'react'
 import { Link } from 'react-router-dom'
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
@@ -6,21 +6,27 @@ import { connect } from 'react-redux'
 import '../assets/css/Navbar.css'
 import SuperUserLinks from './SuperUserLinks';
 let scrolled ="false";
-const Navbar = (props) => {
-  const { auth, profile } = props;
-  const links = auth.uid ?(auth.email=="admin@gmail.com")?<SuperUserLinks profile={profile}/>: <SignedInLinks profile={profile} /> : <SignedOutLinks />;
-  var nav = document.getElementById('navbar');
+class Navbar extends Component{
+  componentDidMount(){
+    var nav = document.getElementById('navbar');
 
-  window.addEventListener('scroll',()=>{
+    window.addEventListener('scroll',()=>{
     const isTop =window.scrollY < 63;
     if(isTop!== true){
-       nav.className="navbar navbar-expand-lg navbar-fixed-top m-0 px-3 scrolled";
+      nav.classList.add("scrolled")
     }
     else{
-      nav.className="navbar navbar-expand-lg navbar-fixed-top m-0 px-3 ";
+      nav.classList.remove("scrolled")
     }
-  })
- 
+  });
+  }
+  render()
+ {
+
+  const { auth, profile } = this.props;
+  const links = auth.uid ?(auth.email=="admin@gmail.com")?<SuperUserLinks profile={profile}/>: <SignedInLinks profile={profile} /> : <SignedOutLinks />;
+  
+  
   return (
     
     <nav className="navbar navbar-expand-lg navbar-fixed-top m-0 px-3" id="navbar" >
@@ -31,7 +37,7 @@ const Navbar = (props) => {
     </nav>
    
   )
-}
+}}
 
 const mapStateToProps = (state) => {
   return{

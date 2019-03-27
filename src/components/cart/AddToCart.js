@@ -6,11 +6,13 @@ import { incrementItem, decrementItem, clearCart,countCart } from '../../store/a
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import Spinner from '../Spinner'
-import {Link} from 'react-router-dom'
+import {Link,Redirect} from 'react-router-dom'
 
 var total=0;
 class AddToCart extends Component {
     render() {
+        const { authError, auth } = this.props;
+        if (!auth.uid) return <Redirect to='/signin' />
         return (
             (this.props.ordered==undefined)?<Spinner/>:
             <div className="cart_container w-100 border my-5">
@@ -60,6 +62,7 @@ class AddToCart extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        auth:state.firebase.auth,
         cartItems: state.cart.cart,
         profile: state.firebase.profile,
         ordered: state.firestore.ordered["/users/" + state.firebase.profile.userid + "/cart"]

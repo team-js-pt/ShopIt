@@ -78,14 +78,15 @@ export const countCart=(count)=>{
     count
   }
 }
-export const placeOrder =(cart,price,userid)=>{
+export const placeOrder =(cart,price,userid,payment)=>{
   return async(dispatch,getState,{getFirestore})=>{
     const firestore = getFirestore();
     let orderid = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
     await firestore.collection('users').doc(userid).collection('orders').doc(orderid).set({
       price:price,
       date: new Date(),
-      orderid: orderid
+      orderid: orderid,
+      payment 
     }).then(()=>{
         cart.map(async(item)=>{
       await firestore.collection('users').doc(userid).collection('orders').doc(orderid).collection('items').add({
@@ -95,7 +96,7 @@ export const placeOrder =(cart,price,userid)=>{
         url:item.url,
       })
     })
-    })
+    }).then(()=>console.log("order placed"))
 
   
     

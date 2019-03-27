@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link ,Redirect} from 'react-router-dom';
 import { singleItemAdd } from '../../store/actions/singleItemAction'
 import { addToCart } from '../../store/actions/cartActions'
 
 class Item extends Component {
     render() {
+        const { authError, auth } = this.props;
+        if (!auth.uid) return <Redirect to='/signin' />
         if (this.props.data && (this.props.data).length > 0) {
             return (
                 <div className="container">
@@ -56,6 +58,7 @@ class Item extends Component {
 };
 const mapStateToProps = (state) => {
     return {
+        auth :state.firebase.auth,
         profile: state.firebase.profile
 
     }

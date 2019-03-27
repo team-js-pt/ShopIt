@@ -4,9 +4,12 @@ import Item from './Item'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import Spinner from '../Spinner'
+import {Redirect} from 'react-router-dom'
 
 class Sports extends Component {
   render() {
+    const { authError, auth } = this.props;
+    if (!auth.uid) return <Redirect to='/signin' />
     return (
       (this.props.sports==undefined)?<Spinner/>:
       <div className="Sports">
@@ -18,6 +21,7 @@ class Sports extends Component {
 
 const mapStateToProps = (state) => {
   return {
+      auth:state.firebase.auth,
       sports : state.firestore.ordered.sports
   }
 }

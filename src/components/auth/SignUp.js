@@ -64,7 +64,7 @@ class SignUp extends Component {
   }
   render() {
     const { auth, authError } = this.props;
-    // if (auth.uid) return <Redirect to='/' />
+    if (auth.uid) return <Redirect to='/signin' />
     return (
       <div className="container-fluid d-flex  align-items-center  justify-content-center mainContainer">
    

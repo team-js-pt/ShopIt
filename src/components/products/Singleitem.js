@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import { singleItemDelete } from '../../store/actions/singleItemAction';
 import {addToCart} from '../../store/actions/cartActions'
+import {Redirect} from 'react-router-dom';
 import '../assets/css/Singleitem.css'
 
 class Singleitem extends Component{
@@ -9,6 +10,8 @@ class Singleitem extends Component{
         this.props.singleItemDelete()
     }
     render(){
+        const { authError, auth } = this.props;
+        if (!auth.uid) return <Redirect to='/signin' />
     return(
         <div className="container-fluid">
             <div className="row">
@@ -49,6 +52,7 @@ class Singleitem extends Component{
 };
 const mapStateToProps = (state) => {
     return {
+    auth: state.firebase.auth,
      singleItem: state.ui.singleItem,
      profile: state.firebase.profile
     }
