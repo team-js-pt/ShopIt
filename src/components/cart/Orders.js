@@ -61,7 +61,7 @@ class Orders extends Component {
                                 <td>{item.price}/-</td>
                                 <td>{item.date.toDate().getDate()}-{item.date.toDate().getMonth()+1}-{item.date.toDate().getFullYear()}</td>
                                 <td>
-                                    <button type="button" data-toggle="modal" data-target="#exampleModalCenter">Delivered</button>
+                                    <button type="button" data-toggle="modal" data-target="#exampleModalCenter">Order Placed</button>
                                 </td>
 
                                 {/* <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

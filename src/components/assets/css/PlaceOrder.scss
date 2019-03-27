@@ -31,10 +31,11 @@
 }
 .addressArea{
     font-family: 'Lato-Bold';
-    font-size: 10px;
-    font-weight: 600;
-    color: #9b9b9b;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
     outline:none;
+    border-bottom:1px solid #008081;
 }
 .AddressInputs{
     border-bottom:1px solid #9b9b9b;
@@ -53,7 +54,7 @@
         font-size: 18px;
         font-weight: 600;
         color: #4a4a4a;
-        height: 26.5px;
+        // height: 26.5px;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
         background-color: #ffffff;
     }
@@ -63,8 +64,10 @@
       padding-left: 35px;
       margin-bottom: 12px;
       cursor: pointer;
-      font-size: 22px;
-      margin-left:50px;
+      font-size: 15px;
+      margin-left:7px;
+      color:#008081;
+      font-family: 'Lato-Bold'
     }
     .RadioContainer input {
       position: absolute;
@@ -115,14 +118,19 @@
         @extend %Btn;
         align-self: flex-end;
     }
+    .SubmitBtn{
+        @extend %Btn;
+        height:25px;
+        width: 180px;
+    }
     .overlayContainer{
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
-        background-color: #fafafa;
+        background-color: white;
     .MyCart{
         font-family: 'Lato-Bold';
         font-size: 20px;
         font-weight: 600;
-        color: #4a4a4a;
+        color: #008081;
     }
     .ClearCart{
         font-family: 'Lato-Bold';
@@ -132,8 +140,10 @@
     }
     .CartItemContainer{
         border-radius: 3px;
+        height:40vh;
+        overflow: auto;
         .CartItem{
-            background-color: #fafafa;
+            background-color: white;
             border:none;
         }
     }

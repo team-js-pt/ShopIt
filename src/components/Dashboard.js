@@ -92,21 +92,21 @@ class Dashboard extends Component {
                           <MDBCarouselInner>
                             <MDBCarouselItem itemId="1">
                               <MDBView>
-                                <img src={require('./assets/images/slider1.jpg')} class="d-block w-100" alt="..." />
+                                <img src={require('./assets/images/slider1.jpg')} className="d-block w-100" alt="..." />
                                 <MDBMask overlay="black-light" />
                               </MDBView>
 
                             </MDBCarouselItem>
                             <MDBCarouselItem itemId="2">
                               <MDBView>
-                                <img src={require('./assets/images/slider2.jpg')} class="d-block w-100" alt="..." />
+                                <img src={require('./assets/images/slider2.jpg')} className="d-block w-100" alt="..." />
                                 <MDBMask overlay="black-strong" />
                               </MDBView>
 
                             </MDBCarouselItem>
                             <MDBCarouselItem itemId="3">
                               <MDBView>
-                                <img src={require('./assets/images/slider3.jpg')} class="d-block w-100" alt="..." />
+                                <img src={require('./assets/images/slider3.jpg')} className="d-block w-100" alt="..." />
                                 <MDBMask overlay="black-slight" />
                               </MDBView>
 

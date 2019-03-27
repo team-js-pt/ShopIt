@@ -18,7 +18,7 @@ import Clothing from './products/Clothing'
 import Profile from './Address/Profile';
 import PlaceOrder from './cart/PlaceOrder';
 import Orders from './cart/Orders'
-
+import Onload from './Onload';
 class App extends Component {
   render() {
     return (
@@ -26,7 +26,8 @@ class App extends Component {
         <div className="App">
           <Navbar/>
           <Switch>
-            <Route path='/' exact component={Dashboard}/>
+            <Route path='/' exact component={Onload}/>
+            <Route path='/Dashboard'  component={Dashboard}/>
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/addproduct' component={AddProduct}/>
@@ -49,7 +50,7 @@ class App extends Component {
             <Route path='/profile' component ={Profile}/>
             <Route path='/placeorder' component ={PlaceOrder}/>
             <Route path='/orders' component={Orders}/>
-
+           
             <Route component={NotFound}/>
 
           </Switch>

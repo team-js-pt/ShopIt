@@ -11,7 +11,7 @@ class Appliances extends Component {
     const { authError, auth } = this.props;
     if (!auth.uid) return <Redirect to='/signin' />
     return (
-      (this.props.Appliance==undefined)?<Spinner/>:
+      (this.props.appliances==undefined)?<Spinner/>:
       <div className="Appliance">
          <Item data={this.props.appliances}/>
       </div>

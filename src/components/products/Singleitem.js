@@ -17,8 +17,8 @@ class Singleitem extends Component{
             <div className="row">
                 <div className="col-md-4"> 
                     <div className="card border-0 d-flex justify-content-end align-items-center">
-                        <div className="card-image  my-5 single">
-                            <img src={this.props.singleItem.url} alt={this.props.singleItem.productName} className="h-100 w-100"/>
+                        <div className="card-image col-10  my-5 single">
+                            <img src={this.props.singleItem.url} alt={this.props.singleItem.productName} className="col-12"/>
                         </div>
                     </div>
                 </div>

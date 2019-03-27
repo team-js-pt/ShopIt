@@ -67,7 +67,7 @@ var total=0;
             total=0;
         }
         else{
-            console.log("please enter address");
+            alert("please enter address");
         }
        
     }
@@ -77,11 +77,12 @@ var total=0;
     return (
       <div className="container-fluid d-flex flex-sm-column flex-lg-row flex-md-column my-4 align-self-center justify-content-center">
           <div className="col-lg-7 col-sm-12   border-left border-right bg-white">
-            <p className="h4 Heading pt-3 mb-2 text-left pl-3">Select Delivery Address</p>
+            <p className="h4 Heading pt-3 mb-2 text-left pl-3">Delivery Address</p>
             <div className="mt-3 pt-2 row">
-                <div className="container  d-flex flex-row">
-                    <span className="col-5"><img src={require("../assets/images/e.jpeg")} className="profileImg "></img></span>
-                     <div className="d-flex flex-column col-6 text-left pt-4">
+                <div className="container  d-flex flex-column">
+                {/* <p className="h5 Heading pt-3 mb-2 text-left pl-3">Profile:</p> */}
+                    <div><p className="addressText ml-5 px-2 col-6  mt-2 ">Profile</p></div>
+                    <div className="d-flex flex-column col-6 text-left  ml-5">
                        
                          <p className="pName">{this.props.profile.firstName}</p>
                          <p className="pName pMail">{this.props.profile.email}</p> 
@@ -92,18 +93,18 @@ var total=0;
             </div>
             </div>
             
-           <p className="addressText ml-5 px-2 col-6  mt-2 pb-4 ">Address</p>
+           <p className="addressText ml-5 px-2 col-6  mt-2  ">Address</p>
            <form className="col-12 d-flex flex-column mt-3 py-2 ml-5 px-2 " onSubmit={this.handleSubmit}>
            {(this.state.isEdit)&&(this.props.address&& this.props.address.length<1)?<button className=" btn-lg ChangeBtn  text-center align-self-start">add address</button>:''}
                 {(this.state.isEdit)
                     ?<p>{this.state.primaryAddress}</p>
                     :<><label className="AddressLabel ">Primary Address</label>
-                    <textarea placeholder="Street Location" id='primaryAddress' className="addressArea col-6 border-top-0 border-left-0 border-right-0  " value={this.state.primaryAddress} onChange={this.handleChange} required ></textarea></> 
+                    <input placeholder="Street Location" id='primaryAddress' className="addressArea col-6 border-top-0 border-left-0 border-right-0  " value={this.state.primaryAddress} onChange={this.handleChange} required ></input></> 
                 }
                 {(this.state.isEdit)
                 ?<p>{this.state.secondaryAddress}</p>
                 :<><label className="AddressLabel mt-2">Secondary Address</label>
-                <textarea placeholder="Street Location" id="secondaryAddress" className="addressArea col-6 border-top-0 border-left-0 border-right-0  " value={this.state.secondaryAddress} onChange={this.handleChange}></textarea></>
+                <input placeholder="Street Location" id="secondaryAddress" className="addressArea col-6 border-top-0 border-left-0 border-right-0  " value={this.state.secondaryAddress} onChange={this.handleChange}></input></>
                 }
                 <div className="d-flex flex-row mt-2">
                     <div className="d-flex flex-column mr-5">
@@ -124,19 +125,24 @@ var total=0;
                         :<><label className="AddressLabel">City</label>
                         <input placeholder="Enter your city" id="city" className=" addressArea border-top-0 border-left-0 border-right-0 AddressInputs pt-2" value={this.state.city} onChange={this.handleChange} required/></>
                     }
-                    {(this.state.isEdit)?'':<input type="submit" value="submit" className=" btn-lg ChangeBtn col-lg-2 col-sm-2 text-center mr-5 p-3"></input>}
+                         {(this.state.isEdit)?'':<button  className="SubmitBtn col-lg-5 col-sm-6 text-center mt-3 mr-5">Submit</button>}
                     </div>
+                   
                 </div>
                    
            
-           <p className="h4 Heading pt-3 mb-3 text-left">Payment Method</p>
+           {/* <p className="h4 Heading pt-3 mb-3 text-left">Payment Method</p> */}
+           <div><p className="addressText  px-2 col-6  mt-2 ">Payment Method</p></div>
            <div className="d-flex flex-row">
+
            <label className="RadioContainer AddressLabel">PayTm
                 <input type="radio"  name="radio" id="paytm" onChange={this.handlePayment}/>
                 <span className="checkmark"></span>
             </label>
             <label className="RadioContainer AddressLabel mr-3">COD
             <input type="radio" name="radio" id="COD"  onChange = {this.handlePayment} defaultChecked/>
+
+        
             <span className="checkmark"></span>
             </label>
            </div>
@@ -149,7 +155,7 @@ var total=0;
                 <p className="MyCart pl-3">My Cart</p>
                 <p className="ClearCart align-self-center pr-3 ">Clear Cart</p>
             </div>
-            <div className="CartItemContainer container mt-4">
+            <div className="CartItemContainer container mt-4 ">
           
                 {this.props.ordered && this.props.ordered.map((item,index)=>{
                     return <div key={index} className="CartItem   card mt-4 pt-4">
@@ -175,7 +181,7 @@ var total=0;
                 
 
             </div>
-            <div className="d-flex justify-content-center"><button className="PlaceOrderBtn col-lg-5 col-sm-6 col-md-2 text-center   my-5" onClick={this.placeOrder}>Place Order</button></div>
+            <div className="d-flex justify-content-center sticky-bottom"><button className="PlaceOrderBtn col-lg-5 col-sm-6 col-md-2 text-center   my-5" onClick={this.placeOrder}>Place Order</button></div>
         </div>
         
     </div>

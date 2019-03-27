@@ -182,7 +182,7 @@
           align-items: center;
 }
 
-.cart_container .cart .left-cart div .checkout button {
+.cart_container .cart .left-cart div .checkout .check {
   background-color: #008081;
   color: white;
   font-size: 16px;
@@ -194,7 +194,7 @@
   margin: 10px 0px;
 }
 
-.cart_container .cart .left-cart div .checkout button:focus {
+.cart_container .cart .left-cart div .checkout .check:focus {
   outline: none;
 }
 

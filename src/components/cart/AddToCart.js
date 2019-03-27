@@ -69,7 +69,7 @@ class AddToCart extends Component {
                                 },total)}/-</div>
                             </div>
                             <div className="checkout">
-                                <button>CheckOut</button>
+                                <Link to='./placeorder' className="check">CheckOut</Link>
                             </div>
                         </div>
                     </div>
