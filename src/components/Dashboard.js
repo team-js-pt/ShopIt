@@ -7,7 +7,9 @@ import { Link } from 'react-router-dom'
 import { singleItemAdd } from '../store/actions/singleItemAction'
 import { MDBCarousel, MDBCarouselCaption, MDBCarouselInner, MDBCarouselItem, MDBView, MDBMask, MDBContainer } from "mdbreact";
 import './assets/css/Dashboard.css'
-import Spinner from './Spinner'
+import Spinner from './Spinner';
+// import { singleItemAdd } from '../store/actions/singleItemAction'
+import { addToCart } from '../store/actions/cartActions'
 
 class Dashboard extends Component {
   constructor(props) {
@@ -16,11 +18,6 @@ class Dashboard extends Component {
       query: true,
       filteredArray: []
     }
-  }
-  singleItemAdd = (val) => {
-    this.props.dispatch(singleItemAdd(
-      { selected: val }
-    ))
   }
   handleChange = (event) => {
     if (event.target.value === "") {
@@ -144,20 +141,21 @@ class Dashboard extends Component {
                         this.state.filteredArray.map((val, ind) => {
                           return (
                             <div className="col-lg-3 col-md-6 my-4" key={ind}>
-                              <Link to={`/${val.category}/${val.id}`} style={{ textDecoration: 'none', color: 'black' }}>
-                                <div className="card mx-3" onClick={() => { this.singleItemAdd(val) }} style={{ borderColor: "rgba(0,0,0,0.14)", boxShadow: "0 2px 8px 0 rgba(0, 0, 0, 0.1)", borderRadius: "3px", height: "295px", width: "240px" }}>
-                                  <img className="card-img-top pt-3" src={val.url} alt="Card image cap" style={{ height: "160px" }} />
+                             
+                                <div className="card mx-3"  style={{ borderColor: "rgba(0,0,0,0.14)", boxShadow: "0 2px 8px 0 rgba(0, 0, 0, 0.1)", borderRadius: "3px", height: "295px", width: "240px" }}>
+                                <Link to={`/${val.category}/${val.id}`} style={{ textDecoration: 'none', color: 'black' }}><img className="card-img-top pt-3" src={val.url} alt="Card image cap" onClick={() => { this.props.singleItemAdd(val) }} style={{ height: "160px" }} /> </Link>
                                   <div className="card-body" style={{ height: "135px" }}>
                                     <h5 className="card-title" style={{ color: "#4a4a4a", fontSize: "30px", fontWeight: "300", fontFamily: "Lato", width: "200px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: " ellipsis" }}>{val.productName}</h5>
                                     <div className="card-text d-flex justify-content-between align-items-center">
                                       <div><div style={{ color: "#4a4a4a", fontSize: "14px", fontWeight: "500", fontFamily: "Lato" }}>Rs: {val.price}$</div>
                                         <div style={{ color: "#4a4a4a" }}>{val.offer}%<sub style={{ color: "red" }}>off</sub></div></div>
-                                      <button className="border rounded-circle" style={{outline:'none',backgroundColor: "#008081", color: 'white', fontSize: '22px', fontWeight: 'bolder', outline: 'none' }}>+</button>
+                                      <button className="border rounded-circle" onClick={() => { this.props.addToCart(val, this.props.profile.userid) }} style={{outline:'none',backgroundColor: "#008081", color: 'white', fontSize: '22px', fontWeight: 'bolder', outline: 'none' }}>+</button>
                                     </div>
                                     
                                   </div>
+                                 
                                 </div>
-                              </Link>
+                             
                             </div>
                           )
                         })
@@ -184,12 +182,18 @@ const mapStateToProps = (state) => {
     beauty: state.firestore.ordered.beauty,
     appliances: state.firestore.ordered.appliances,
     clothing: state.firestore.ordered.clothing,
-    ui: state.ui.items
+    ui: state.ui.items,
+    profile: state.firebase.profile
   }
 }
+const mapDispatchToProps = (dispatch) => ({
+  addToCart: (payload, userid) => dispatch(addToCart(payload, userid)),
+  singleItemAdd: (payload) => dispatch(singleItemAdd(payload)),
+
+})
 
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps,mapDispatchToProps),
   firestoreConnect([
     { collection: 'vegetables', orderBy: ['addedOn', 'desc'] },
     { collection: 'footwear', orderBy: ['addedOn', 'desc'] },
