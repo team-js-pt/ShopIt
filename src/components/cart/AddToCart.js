@@ -6,6 +6,7 @@ import { incrementItem, decrementItem, clearCart,countCart } from '../../store/a
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import Spinner from '../Spinner'
+import {Link} from 'react-router-dom'
 
 var total=0;
 class AddToCart extends Component {
@@ -46,7 +47,7 @@ class AddToCart extends Component {
                                 },total)}</div>
                             </div>
                             <div className="checkout">
-                                <button>CheckOut</button>
+                                <Link to='/placeorder'>CheckOut</Link>
                             </div>
                         </div>
                     </div>

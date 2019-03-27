@@ -90,7 +90,7 @@ class Address extends Component {
                             </div>
                         </div>
                   
-                        <div className="col-md-8">
+                        {/* <div className="col-md-8">
                             <div className="row">
                                 {this.state.SCP.map((val,ind)=>{
                                     return(
@@ -103,7 +103,7 @@ class Address extends Component {
                                         )
                                 })}
                             </div>
-                        </div>
+                        </div> */}
                         <div className="col-md-8 d-flex justify-content-center align-items-center">
                             <input type="submit" value="submit" className="btn w-50 mb-5" style={{ backgroundColor: '#008081', color: 'white', boxShadow: 'none' }}></input>
                         </div>

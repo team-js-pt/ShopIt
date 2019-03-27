@@ -16,7 +16,12 @@ import 'firebase/storage'
     // projectId: "todos-268ca",
     // storageBucket: "todos-268ca.appspot.com",
     // messagingSenderId: "562225617067"
-    
+    apiKey: "AIzaSyBZWt_2HY-VJbRK5vgfBbia4YaEOmyhwSU",
+    authDomain: "store-55432.firebaseapp.com",
+    databaseURL: "https://store-55432.firebaseio.com",
+    projectId: "store-55432",
+    storageBucket: "store-55432.appspot.com",
+    messagingSenderId: "585998785355"
   };
   firebase.initializeApp(config);
 firebase.firestore()

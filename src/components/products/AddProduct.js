@@ -47,20 +47,18 @@ class AddProduct extends Component {
   });
 }
 
-  render() {
-   this.catty;
-     
+  render() {     
     const { auth, authError } = this.props;
     if (auth.email!=="admin@gmail.com") return <Redirect to='/' /> 
     return (
       <div className="container d-flex  align-items-center  justify-content-center  AddProductContainer  ">
          
           <form className="text-dark  text-center d-flex flex-column col-lg-6 addForm align-items-center  justify-content-center " onSubmit={this.handleSubmit}>
-          <p class="AP_Text mt-5 ">Add Product</p>
+          <p className="AP_Text mt-5 ">Add Product</p>
           
             <div className="d-flex flex-column col-11 justify-content-start" >
               <div  id='category' className="col-4   m-0 p-0 " onChange={this.handleChange}  >
-                  <select className="categories my-4 col-12 m-0 p-0  inputs ">
+                  <select id='category' className="categories my-4 col-12 m-0 p-0  inputs ">
                     <option >Categories</option>
                     <option value="vegetables">vegetables</option>
                     <option value="footwear">Footwear</option>

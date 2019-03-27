@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../assets/css/orders.css';
+import '../assets/css/Orders.css';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { connect } from 'react-redux';

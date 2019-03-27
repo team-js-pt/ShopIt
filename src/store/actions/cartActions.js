@@ -61,7 +61,6 @@ export const decrementItem = (userid,productName)=>{
   })
 }}
 export const clearCart = (userid)=>{
-  console.log(userid)
   return async(dispatch,getState,{getFirestore})=>{
     const firestore = getFirestore();
     firestore.collection('users').doc(userid).collection('cart').get().then(snapshot => {
@@ -77,5 +76,28 @@ export const countCart=(count)=>{
   return {
     type:'COUNT_OF_CART',
     count
+  }
+}
+export const placeOrder =(cart,price,userid)=>{
+  return async(dispatch,getState,{getFirestore})=>{
+    const firestore = getFirestore();
+    let orderid = (Date.now().toString(36) + Math.random().toString(36).substr(2, 5)).toUpperCase();
+    await firestore.collection('users').doc(userid).collection('orders').doc(orderid).set({
+      price:price,
+      date: new Date(),
+      orderid: orderid
+    }).then(()=>{
+        cart.map(async(item)=>{
+      await firestore.collection('users').doc(userid).collection('orders').doc(orderid).collection('items').add({
+        productName : item.productName,
+        price : item.price,
+        noOfItems : item.noOfItems,
+        url:item.url,
+      })
+    })
+    })
+
+  
+    
   }
 }

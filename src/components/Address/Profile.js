@@ -5,11 +5,9 @@ import {compose} from 'redux'
 import {firestoreConnect} from 'react-redux-firebase'
 class Profile extends Component{
     render(){
-        console.log(this.props.user)
-        console.log(this.props.profile.userid)
-        if(this.props.user){
+        if(this.props.profile){
             
-            let {firstName,lastName,email,phNumber} = this.props.user[0]
+            let {firstName,lastName,email,phNumber} = this.props.profile
             return(
                 <div className="container mt-5">
                     <div className="row m-auto  pt-5">

@@ -12,7 +12,6 @@ const Navbar = (props) => {
   var nav = document.getElementById('navbar');
 
   window.addEventListener('scroll',()=>{
-    console.log(window.scrollY)
     const isTop =window.scrollY < 63;
     if(isTop!== true){
        nav.className="navbar navbar-expand-lg navbar-fixed-top m-0 px-3 scrolled";
