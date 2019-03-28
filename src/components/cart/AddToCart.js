@@ -14,6 +14,7 @@ var array = []
 class AddToCart extends Component {
         
     render() {
+        var array = [];
         (this.props.vegetables&&this.props.vegetables.length>1)?array.push(this.props.vegetables[0]):'';
         (this.props.footwear&&this.props.footwear.length>1)?array.push(this.props.footwear[0]):'';
         (this.props.clothing&&this.props.clothing.length>1)?array.push(this.props.clothing[0]):'';
