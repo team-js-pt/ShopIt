@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, HashRouter } from 'react-router-dom'
 import Dashboard from './Dashboard'
 import SignIn from './auth/SignIn'
 import SignUp from './auth/SignUp'
@@ -22,12 +22,12 @@ import Onload from './Onload';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter>
         <div className="App">
           <Navbar/>
           <Switch>
-            <Route path='/' exact component={Onload}/>
-            <Route path='/Dashboard'  component={Dashboard}/>
+            <Route path='/' exact component={SignIn}/>
+            <Route path='/dashboard'  component={Dashboard}/>
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/addproduct' component={AddProduct}/>
@@ -50,12 +50,11 @@ class App extends Component {
             <Route path='/profile' component ={Profile}/>
             <Route path='/placeorder' component ={PlaceOrder}/>
             <Route path='/orders' component={Orders}/>
-           
             <Route component={NotFound}/>
 
           </Switch>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     );
   }
 }

@@ -21,7 +21,7 @@ class SignIn extends Component {
     }
     render() {
         const { authError, auth } = this.props;
-        if (auth.uid) return <Redirect to='/Dashboard' />
+        if (auth.uid) return <Redirect to='/dashboard' />
         return (
             (this.props.auth.isLoaded==false)?<Spinner/>:
             <div className="container-fluid d-flex  align-items-center  justify-content-center mainContainer">

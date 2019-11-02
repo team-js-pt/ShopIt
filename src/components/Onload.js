@@ -8,7 +8,7 @@ export default class Onload extends Component {
       <div className="container-fluid p-0 m-0 w-100 bg-dark onload" >
         <div className="carouselOverlay" >
         <div className="shopBtn  mr-5 mt-2">
-        <Link to='/Dashboard' className="ShopNow  text-white btn font-weight-bold">Shop Now</Link>
+        <Link to='/dashboard' className="ShopNow  text-white btn font-weight-bold">Shop Now</Link>
         <div className="logoDiv">
           <marquee className="logoTxt ">ShopIt</marquee>
         </div>
